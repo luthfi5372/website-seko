@@ -5,6 +5,7 @@ import { LiquidGlassCard } from "@/components/ui/liquid-glass-card";
 import { NeuralNetworkBackground } from "@/components/ui/neural-network";
 import { WavyBackground } from "@/components/ui/wavy-background";
 import { Animated3DCarousel } from "@/components/ui/animated-carousel";
+import { TextScramble } from "@/components/ui/text-scramble";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { ShieldCheck, Zap, ArrowRight, Users } from "lucide-react";
 import { motion } from "framer-motion";
@@ -55,8 +56,10 @@ export default function HomePage() {
             className="text-center space-y-6"
           >
             <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-primary">
-              SMA DARUL ULUM 1 <br />
-              <span className="text-secondary bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">UNGGULAN</span>
+              <TextScramble text="SMA DARUL ULUM 1" duration={2} /> <br />
+              <span className="text-secondary bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+                <TextScramble text="UNGGULAN" duration={2.5} />
+              </span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-600 font-serif italic max-w-2xl mx-auto">
               "Membangun Masa Depan Berbasis Iman, Ilmu, dan Teknologi"
@@ -101,8 +104,10 @@ export default function HomePage() {
             className="space-y-8"
           >
             <h2 className="text-4xl md:text-5xl font-black text-primary leading-tight">
-              Pesan dari <br />
-              <span className="text-secondary bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent uppercase">Kepala Sekolah</span>
+              <TextScramble text="Pesan dari" duration={2} /> <br />
+              <span className="text-secondary bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent uppercase">
+                <TextScramble text="Kepala Sekolah" duration={2.5} />
+              </span>
             </h2>
             <p className="text-2xl font-serif italic text-slate-600 leading-relaxed border-l-4 border-secondary pl-6">
               "Pendidikan bukan sekadar transfer ilmu, melainkan proses membentuk karakter yang siap menghadapi tantangan era digital dengan landasan spiritual yang kokoh."
@@ -146,7 +151,9 @@ export default function HomePage() {
       <section className="py-24 bg-primary relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
         <div className="text-center mb-16 px-6">
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-4">DOKUMENTASI & GALERI</h2>
+          <h2 className="text-4xl md:text-6xl font-black text-white mb-4">
+            <TextScramble text="DOKUMENTASI & GALERI" duration={3} />
+          </h2>
           <p className="text-secondary font-serif italic text-lg">Melihat lebih dekat ekosistem belajar yang inspiratif</p>
         </div>
         <Animated3DCarousel items={carouselItems} />
