@@ -148,13 +148,13 @@ export default function HomePage() {
       </section>
 
       {/* Gallery Section */}
-      <section className="py-24 bg-primary relative overflow-hidden">
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-secondary/50 to-transparent" />
         <div className="text-center mb-16 px-6">
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-4">
+          <h2 className="text-4xl md:text-6xl font-black text-primary mb-4">
             <TextScramble text="DOKUMENTASI & GALERI" duration={3} />
           </h2>
-          <p className="text-indigo-200 font-serif italic text-lg">Melihat lebih dekat ekosistem belajar yang inspiratif</p>
+          <p className="text-secondary font-serif italic text-lg">Melihat lebih dekat ekosistem belajar yang inspiratif</p>
         </div>
         <Animated3DCarousel items={carouselItems} />
       </section>
@@ -168,16 +168,16 @@ export default function HomePage() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
           >
-            <h2 className="text-4xl md:text-7xl font-black mb-6 text-white uppercase tracking-tighter">
-              Pusat Inovasi <br /> <span className="text-accent">&</span> Teknologi
+            <h2 className="text-4xl md:text-7xl font-black mb-6 text-primary uppercase tracking-tighter">
+              Pusat Inovasi <br /> <span className="text-secondary">&</span> Teknologi
             </h2>
             <p className="text-lg md:text-xl text-secondary font-serif italic mb-10 max-w-xl mx-auto">
               Kami menghadirkan ekosistem riset yang memungkinkan siswa untuk mengeksplorasi batas-batas sains dan teknologi modern.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {["Robotics", "AI Lab", "Science Hub", "BioTech"].map((item) => (
-                <div key={item} className="bg-white/5 backdrop-blur-md p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-colors cursor-pointer group">
-                  <p className="font-bold text-indigo-200 group-hover:text-white">{item}</p>
+                <div key={item} className="bg-white p-4 rounded-xl border border-slate-200 hover:border-secondary transition-colors cursor-pointer group shadow-sm">
+                  <p className="font-bold text-slate-500 group-hover:text-secondary">{item}</p>
                 </div>
               ))}
             </div>
@@ -234,10 +234,10 @@ export default function HomePage() {
                     {news.date}
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
+                <h3 className="text-xl font-bold text-primary mb-3 group-hover:text-secondary transition-colors">
                   {news.title}
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-500 text-sm leading-relaxed">
                   {news.desc}
                 </p>
               </motion.div>
@@ -249,11 +249,11 @@ export default function HomePage() {
       {/* CTA Section */}
       <section className="py-32 px-6 md:px-20 text-center relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 blur-[150px] rounded-full -z-10" />
-        <h2 className="text-4xl md:text-7xl font-black mb-8 text-white">
+        <h2 className="text-4xl md:text-7xl font-black mb-8 text-primary">
           Siap Bergabung dengan <br />
-          <span className="text-gradient">Generasi Unggul?</span>
+          <span className="text-secondary">Generasi Unggul?</span>
         </h2>
-        <p className="text-slate-400 max-w-2xl mx-auto mb-12 text-lg">
+        <p className="text-slate-600 max-w-2xl mx-auto mb-12 text-lg">
           Jadilah bagian dari perjalanan menuju prestasi global dan masa depan yang cerah bersama SMA Darul Ulum 1 Unggulan. Pendaftaran dibuka untuk tahun ajaran 2024/2025.
         </p>
         <button className="px-12 py-5 bg-secondary text-white rounded-xl font-black text-xl hover:scale-105 transition-transform shadow-2xl shadow-secondary/30 uppercase tracking-widest">

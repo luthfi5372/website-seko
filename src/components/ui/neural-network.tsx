@@ -29,7 +29,7 @@ function NeuralParticles() {
       <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
-          color="#D4AF37"
+          color="#6366F1"
           size={0.02}
           sizeAttenuation={true}
           depthWrite={false}
@@ -41,7 +41,7 @@ function NeuralParticles() {
 
 export const NeuralNetworkBackground = () => {
   return (
-    <div className="w-full h-full absolute inset-0 -z-10 bg-[#11251A]">
+    <div className="w-full h-full absolute inset-0 -z-10 bg-background">
       <Canvas camera={{ position: [0, 0, 5] }}>
         <NeuralParticles />
       </Canvas>
