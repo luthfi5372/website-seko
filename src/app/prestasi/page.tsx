@@ -40,7 +40,7 @@ export default function PrestasiPage() {
   return (
     <main className="relative min-h-screen bg-background">
       <section className="relative h-[50vh] overflow-hidden">
-        <WavyBackground speed="slow" containerClassName="h-full" colors={["#D4AF37", "#E9D8A6", "#8FBC8F"]}>
+        <WavyBackground speed="slow" containerClassName="h-full" colors={["#0F172A", "#91A9B1", "#C5A059"]}>
           <h1 className="text-5xl md:text-7xl font-black text-primary text-center">
             JEJAK <span className="text-accent">PRESTASI</span>
           </h1>

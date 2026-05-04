@@ -46,14 +46,14 @@ export const Navbar = ({ className }: { className?: string }) => {
       >
         <div className={cn(
           "max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-300",
-          scrolled ? "bg-white/90 backdrop-blur-md py-3 px-8 rounded-full border border-primary/5 shadow-lg" : ""
+          scrolled ? "bg-primary/90 backdrop-blur-md py-3 px-8 rounded-full border border-white/5 shadow-2xl" : ""
         )}>
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-gradient-to-tr from-primary to-secondary rounded-xl flex items-center justify-center text-white font-black text-xl shadow-[0_4px_12px_rgba(30,75,61,0.2)] group-hover:scale-110 transition-transform">
+            <div className="w-10 h-10 bg-gradient-to-tr from-primary to-accent rounded-xl flex items-center justify-center text-white font-black text-xl shadow-[0_4px_12px_rgba(15,23,42,0.3)] group-hover:scale-110 transition-transform">
               D
             </div>
             <div className="hidden md:block">
-              <span className="text-primary font-black tracking-tighter text-lg leading-none block">SMADU 1</span>
+              <span className="text-white md:text-primary scrolled:text-white font-black tracking-tighter text-lg leading-none block">SMADU 1</span>
               <span className="text-secondary font-bold text-[10px] tracking-[0.2em] uppercase">Unggulan Jombang</span>
             </div>
           </Link>
@@ -63,10 +63,10 @@ export const Navbar = ({ className }: { className?: string }) => {
               <Link 
                 key={item} 
                 href={item === "Beranda" ? "/" : `/${item.toLowerCase()}`}
-                className="text-slate-600 hover:text-primary text-sm font-bold transition-colors relative group"
+                className="text-slate-400 hover:text-accent text-sm font-bold transition-colors relative group"
               >
                 {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full" />
               </Link>
             ))}
           </div>

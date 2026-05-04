@@ -28,9 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="id">
       <body
-        className={`${montserrat.variable} ${playfair.variable} antialiased bg-slate-950 text-slate-50 selection:bg-amber-500/30 overflow-x-hidden`}
+        className={`${montserrat.variable} ${playfair.variable} antialiased bg-background-dark text-slate-50 selection:bg-accent/30 overflow-x-hidden`}
       >
         <CustomCursor />
         <ScrollProgress />
