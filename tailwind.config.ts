@@ -11,22 +11,22 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#1E4B3D", // Deep Forest Green
-          light: "#2D5A27",
+          DEFAULT: "#0F172A", // Deep Sea Teal (Blue-Black)
+          light: "#1E293B",
         },
         secondary: {
-          DEFAULT: "#8FBC8F", // Soft Sage Green
-          light: "#A3C1AD",
+          DEFAULT: "#91A9B1", // Quietude Blue
+          light: "#CBD5E1",
         },
         accent: {
-          DEFAULT: "#D4AF37", // Muted Gold
-          light: "#E9D8A6",
+          DEFAULT: "#C5A059", // Muted Gold
+          light: "#E2D1A1",
         },
         background: {
-          DEFAULT: "#F9FAFB", // Off-White
-          dark: "#11251A",    // Deep Green-Black for contrast sections
+          DEFAULT: "#ECF0F1", // Cloud White
+          dark: "#0F172A",    // Deep Sea Teal
         },
-        charcoal: "#374151",
+        charcoal: "#1E293B",
       },
       fontFamily: {
         sans: ["var(--font-montserrat)"],

@@ -56,7 +56,7 @@ export default function HomePage() {
           >
             <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-primary">
               SMA DARUL ULUM 1 <br />
-              <span className="text-secondary bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">UNGGULAN</span>
+              <span className="text-secondary bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">UNGGULAN</span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-600 font-serif italic max-w-2xl mx-auto">
               "Membangun Masa Depan Berbasis Iman, Ilmu, dan Teknologi"
@@ -102,7 +102,7 @@ export default function HomePage() {
           >
             <h2 className="text-4xl md:text-5xl font-black text-primary leading-tight">
               Pesan dari <br />
-              <span className="text-secondary bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary uppercase">Kepala Sekolah</span>
+              <span className="text-secondary bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent uppercase">Kepala Sekolah</span>
             </h2>
             <p className="text-2xl font-serif italic text-slate-600 leading-relaxed border-l-4 border-secondary pl-6">
               "Pendidikan bukan sekadar transfer ilmu, melainkan proses membentuk karakter yang siap menghadapi tantangan era digital dengan landasan spiritual yang kokoh."
@@ -223,11 +223,11 @@ export default function HomePage() {
               >
                 <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-6 glass border-white/10">
                   <img src={news.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                  <div className="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
                     {news.date}
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors">
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
                   {news.title}
                 </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
@@ -241,7 +241,7 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="py-32 px-6 md:px-20 text-center relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 blur-[150px] rounded-full -z-10" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 blur-[150px] rounded-full -z-10" />
         <h2 className="text-4xl md:text-7xl font-black mb-8 text-white">
           Siap Bergabung dengan <br />
           <span className="text-gradient">Generasi Unggul?</span>
@@ -249,7 +249,7 @@ export default function HomePage() {
         <p className="text-slate-400 max-w-2xl mx-auto mb-12 text-lg">
           Jadilah bagian dari perjalanan menuju prestasi global dan masa depan yang cerah bersama SMA Darul Ulum 1 Unggulan. Pendaftaran dibuka untuk tahun ajaran 2024/2025.
         </p>
-        <button className="px-12 py-5 bg-gradient-to-r from-emerald-600 to-amber-500 text-white rounded-full font-black text-xl hover:scale-110 transition-transform shadow-2xl shadow-emerald-500/30">
+        <button className="px-12 py-5 bg-gradient-to-r from-primary to-accent text-white rounded-full font-black text-xl hover:scale-110 transition-transform shadow-2xl shadow-primary/30">
           DAFTAR SEKARANG
         </button>
       </section>
@@ -260,14 +260,14 @@ export default function HomePage() {
       </div>
 
       {/* Footer */}
-      <footer className="py-20 border-t border-white/5 px-6 md:px-20 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm bg-slate-950">
+      <footer className="py-20 border-t border-white/5 px-6 md:px-20 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm bg-primary">
         <div className="mb-12 md:mb-0 text-center md:text-left space-y-4">
           <h4 className="text-white font-black text-2xl tracking-tighter">SMA Darul Ulum 1 Unggulan</h4>
           <p className="max-w-xs">Jl. Rejoso, Peterongan, Jombang, Jawa Timur. <br /> Telp: (0321) 866XXX</p>
           <div className="flex gap-4 justify-center md:justify-start">
-            <div className="w-8 h-8 rounded-full glass flex items-center justify-center hover:text-emerald-400 transition-colors cursor-pointer italic">f</div>
-            <div className="w-8 h-8 rounded-full glass flex items-center justify-center hover:text-emerald-400 transition-colors cursor-pointer italic">ig</div>
-            <div className="w-8 h-8 rounded-full glass flex items-center justify-center hover:text-emerald-400 transition-colors cursor-pointer italic">yt</div>
+            <div className="w-8 h-8 rounded-full glass flex items-center justify-center hover:text-accent transition-colors cursor-pointer italic">f</div>
+            <div className="w-8 h-8 rounded-full glass flex items-center justify-center hover:text-accent transition-colors cursor-pointer italic">ig</div>
+            <div className="w-8 h-8 rounded-full glass flex items-center justify-center hover:text-accent transition-colors cursor-pointer italic">yt</div>
           </div>
         </div>
         <div className="flex gap-16">
