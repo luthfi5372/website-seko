@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body
-        className={`${montserrat.variable} ${playfair.variable} antialiased bg-background-dark text-slate-50 selection:bg-accent/30 overflow-x-hidden`}
+        className={`${montserrat.variable} ${playfair.variable} antialiased bg-background text-primary selection:bg-secondary/10 overflow-x-hidden`}
       >
         <CustomCursor />
         <ScrollProgress />

@@ -57,7 +57,7 @@ export default function HomePage() {
           >
             <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-primary">
               <TextScramble text="SMA DARUL ULUM 1" duration={2} /> <br />
-              <span className="text-secondary bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+              <span className="text-secondary block mt-2">
                 <TextScramble text="UNGGULAN" duration={2.5} />
               </span>
             </h1>
@@ -65,12 +65,12 @@ export default function HomePage() {
               "Membangun Masa Depan Berbasis Iman, Ilmu, dan Teknologi"
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-4 pt-8">
-              <button className="px-8 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary-light transition-all hover:scale-105 shadow-lg shadow-primary/10">
+              <button className="px-8 py-3 bg-secondary text-white rounded-xl font-bold hover:bg-accent transition-all hover:scale-105 shadow-xl shadow-secondary/20">
                 Pendaftaran PPDB
               </button>
               <LinkPreview 
                 url="https://smadu1-jombang.sch.id" 
-                className="px-8 py-3 bg-white border border-primary/10 text-primary rounded-full font-bold hover:bg-slate-50 transition-all hover:scale-105 flex items-center justify-center"
+                className="px-8 py-3 bg-white border border-slate-200 text-primary rounded-xl font-bold hover:bg-slate-50 transition-all hover:scale-105 flex items-center justify-center shadow-sm"
               >
                 Jelajahi Fasilitas <ArrowRight className="ml-2 w-4 h-4" />
               </LinkPreview>
@@ -105,7 +105,7 @@ export default function HomePage() {
           >
             <h2 className="text-4xl md:text-5xl font-black text-primary leading-tight">
               <TextScramble text="Pesan dari" duration={2} /> <br />
-              <span className="text-secondary bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent uppercase">
+              <span className="text-secondary uppercase">
                 <TextScramble text="Kepala Sekolah" duration={2.5} />
               </span>
             </h2>
@@ -121,7 +121,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats/About Section */}
-      <section className="py-24 px-6 md:px-20 relative z-10 bg-secondary/5">
+      <section className="py-24 px-6 md:px-20 relative z-10 bg-slate-50">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           <LiquidGlassCard>
             <ShieldCheck className="w-12 h-12 text-primary mb-4" />
@@ -149,12 +149,12 @@ export default function HomePage() {
 
       {/* Gallery Section */}
       <section className="py-24 bg-primary relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-secondary/50 to-transparent" />
         <div className="text-center mb-16 px-6">
           <h2 className="text-4xl md:text-6xl font-black text-white mb-4">
             <TextScramble text="DOKUMENTASI & GALERI" duration={3} />
           </h2>
-          <p className="text-secondary font-serif italic text-lg">Melihat lebih dekat ekosistem belajar yang inspiratif</p>
+          <p className="text-indigo-200 font-serif italic text-lg">Melihat lebih dekat ekosistem belajar yang inspiratif</p>
         </div>
         <Animated3DCarousel items={carouselItems} />
       </section>
@@ -176,8 +176,8 @@ export default function HomePage() {
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {["Robotics", "AI Lab", "Science Hub", "BioTech"].map((item) => (
-                <div key={item} className="bg-white/5 backdrop-blur-md p-4 rounded-xl border border-accent/20 hover:bg-accent/10 transition-colors cursor-pointer group">
-                  <p className="font-bold text-accent group-hover:text-accent-light">{item}</p>
+                <div key={item} className="bg-white/5 backdrop-blur-md p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-colors cursor-pointer group">
+                  <p className="font-bold text-indigo-200 group-hover:text-white">{item}</p>
                 </div>
               ))}
             </div>
@@ -256,7 +256,7 @@ export default function HomePage() {
         <p className="text-slate-400 max-w-2xl mx-auto mb-12 text-lg">
           Jadilah bagian dari perjalanan menuju prestasi global dan masa depan yang cerah bersama SMA Darul Ulum 1 Unggulan. Pendaftaran dibuka untuk tahun ajaran 2024/2025.
         </p>
-        <button className="px-12 py-5 bg-gradient-to-r from-primary to-accent text-white rounded-full font-black text-xl hover:scale-110 transition-transform shadow-2xl shadow-primary/30">
+        <button className="px-12 py-5 bg-secondary text-white rounded-xl font-black text-xl hover:scale-105 transition-transform shadow-2xl shadow-secondary/30 uppercase tracking-widest">
           DAFTAR SEKARANG
         </button>
       </section>
@@ -267,30 +267,30 @@ export default function HomePage() {
       </div>
 
       {/* Footer */}
-      <footer className="py-20 border-t border-white/5 px-6 md:px-20 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm bg-primary">
+      <footer className="py-20 border-t border-slate-200 px-6 md:px-20 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm bg-white">
         <div className="mb-12 md:mb-0 text-center md:text-left space-y-4">
-          <h4 className="text-white font-black text-2xl tracking-tighter">SMA Darul Ulum 1 Unggulan</h4>
-          <p className="max-w-xs">Jl. Rejoso, Peterongan, Jombang, Jawa Timur. <br /> Telp: (0321) 866XXX</p>
+          <h4 className="text-primary font-black text-2xl tracking-tighter">SMA Darul Ulum 1 Unggulan</h4>
+          <p className="max-w-xs text-slate-400">Jl. Rejoso, Peterongan, Jombang, Jawa Timur. <br /> Telp: (0321) 866XXX</p>
           <div className="flex gap-4 justify-center md:justify-start">
-            <div className="w-8 h-8 rounded-full glass flex items-center justify-center hover:text-accent transition-colors cursor-pointer italic">f</div>
-            <div className="w-8 h-8 rounded-full glass flex items-center justify-center hover:text-accent transition-colors cursor-pointer italic">ig</div>
-            <div className="w-8 h-8 rounded-full glass flex items-center justify-center hover:text-accent transition-colors cursor-pointer italic">yt</div>
+            <div className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center hover:text-secondary transition-colors cursor-pointer italic text-slate-400">f</div>
+            <div className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center hover:text-secondary transition-colors cursor-pointer italic text-slate-400">ig</div>
+            <div className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center hover:text-secondary transition-colors cursor-pointer italic text-slate-400">yt</div>
           </div>
         </div>
         <div className="flex gap-16">
           <div className="flex flex-col gap-3">
-            <span className="text-white font-bold uppercase tracking-widest text-xs mb-2">Portal</span>
-            <a href="#" className="hover:text-white transition-colors">Siswa</a>
-            <a href="#" className="hover:text-white transition-colors">Guru</a>
-            <a href="#" className="hover:text-white transition-colors">Alumni</a>
-            <a href="#" className="hover:text-white transition-colors">Wali Murid</a>
+            <span className="text-primary font-bold uppercase tracking-widest text-[10px] mb-2">Portal</span>
+            <a href="#" className="hover:text-secondary transition-colors">Siswa</a>
+            <a href="#" className="hover:text-secondary transition-colors">Guru</a>
+            <a href="#" className="hover:text-secondary transition-colors">Alumni</a>
+            <a href="#" className="hover:text-secondary transition-colors">Wali Murid</a>
           </div>
           <div className="flex flex-col gap-3">
-            <span className="text-white font-bold uppercase tracking-widest text-xs mb-2">Layanan</span>
-            <a href="#" className="hover:text-white transition-colors">E-Learning</a>
-            <a href="#" className="hover:text-white transition-colors">Perpustakaan Digital</a>
-            <a href="#" className="hover:text-white transition-colors">PPDB Online</a>
-            <a href="#" className="hover:text-white transition-colors">Konsultasi Karir</a>
+            <span className="text-primary font-bold uppercase tracking-widest text-[10px] mb-2">Layanan</span>
+            <a href="#" className="hover:text-secondary transition-colors">E-Learning</a>
+            <a href="#" className="hover:text-secondary transition-colors">Perpustakaan Digital</a>
+            <a href="#" className="hover:text-secondary transition-colors">PPDB Online</a>
+            <a href="#" className="hover:text-secondary transition-colors">Konsultasi Karir</a>
           </div>
         </div>
       </footer>

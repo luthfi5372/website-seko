@@ -3,13 +3,13 @@
 @theme {
   --color-primary: #0F172A;
   --color-primary-light: #1E293B;
-  --color-secondary: #91A9B1;
-  --color-secondary-light: #CBD5E1;
-  --color-accent: #C5A059;
-  --color-accent-light: #E2D1A1;
-  --color-background: #ECF0F1;
+  --color-secondary: #6366F1;
+  --color-secondary-light: #818CF8;
+  --color-accent: #4F46E5;
+  --color-accent-light: #6366F1;
+  --color-background: #F8FAFC;
   --color-background-dark: #0F172A;
-  --color-charcoal: #1E293B;
+  --color-charcoal: #0F172A;
   
   --font-sans: var(--font-montserrat);
   --font-serif: var(--font-playfair);
@@ -21,7 +21,7 @@
   }
 
   body {
-    @apply bg-background text-charcoal font-sans antialiased selection:bg-accent/20;
+    @apply bg-background text-charcoal font-sans antialiased selection:bg-secondary/20;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -31,11 +31,11 @@
 
 @layer components {
   .glass {
-    @apply bg-white/60 backdrop-blur-md border border-white/20 shadow-sm;
+    @apply bg-white/80 backdrop-blur-sm border border-slate-200 shadow-sm;
   }
   
   .glass-dark {
-    @apply bg-primary/90 backdrop-blur-md border border-white/5 shadow-xl;
+    @apply bg-slate-900/90 backdrop-blur-md border border-white/5 shadow-xl;
   }
 }
 
