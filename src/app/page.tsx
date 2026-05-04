@@ -1,65 +1,292 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { FloatingDock } from "@/components/ui/floating-dock";
+import { LiquidGlassCard } from "@/components/ui/liquid-glass-card";
+import { NeuralNetworkBackground } from "@/components/ui/neural-network";
+import { WavyBackground } from "@/components/ui/wavy-background";
+import { Animated3DCarousel } from "@/components/ui/animated-carousel";
+import { LinkPreview } from "@/components/ui/link-preview";
+import { ShieldCheck, Zap, ArrowRight, Users } from "lucide-react";
+import { motion } from "framer-motion";
+import { NAV_ITEMS } from "@/lib/constants";
+
+export default function HomePage() {
+  const dockItems = NAV_ITEMS.map(item => ({
+    ...item,
+    icon: <item.icon className="w-4 h-4" />
+  }));
+
+  const carouselItems = [
+    {
+      id: 1,
+      title: "Laboratorium Riset Terpadu",
+      category: "Fasilitas",
+      image: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?q=80&w=2070&auto=format&fit=crop",
+    },
+    {
+      id: 2,
+      title: "Perpustakaan Digital 24/7",
+      category: "Fasilitas",
+      image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=2070&auto=format&fit=crop",
+    },
+    {
+      id: 3,
+      title: "Gedung Pusat Inovasi",
+      category: "Arsitektur",
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
+    },
+    {
+      id: 4,
+      title: "NCC 2024: National Creativity Competition",
+      category: "Event",
+      image: "https://images.unsplash.com/photo-1540575861501-7ad060e39fe5?q=80&w=2070&auto=format&fit=crop",
+    },
+  ];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="relative min-h-screen overflow-x-hidden">
+      {/* Hero Section */}
+      <section className="relative h-screen">
+        <WavyBackground className="max-w-4xl mx-auto pb-40">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center space-y-6"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-primary">
+              SMA DARUL ULUM 1 <br />
+              <span className="text-secondary bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">UNGGULAN</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-slate-600 font-serif italic max-w-2xl mx-auto">
+              "Membangun Masa Depan Berbasis Iman, Ilmu, dan Teknologi"
+            </p>
+            <div className="flex flex-col md:flex-row justify-center gap-4 pt-8">
+              <button className="px-8 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary-light transition-all hover:scale-105 shadow-lg shadow-primary/10">
+                Pendaftaran PPDB
+              </button>
+              <LinkPreview 
+                url="https://smadu1-jombang.sch.id" 
+                className="px-8 py-3 bg-white border border-primary/10 text-primary rounded-full font-bold hover:bg-slate-50 transition-all hover:scale-105 flex items-center justify-center"
+              >
+                Jelajahi Fasilitas <ArrowRight className="ml-2 w-4 h-4" />
+              </LinkPreview>
+            </div>
+          </motion.div>
+        </WavyBackground>
+      </section>
+
+      {/* Principal Section */}
+      <section className="py-24 px-6 md:px-20 relative bg-background">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative"
           >
-            Documentation
-          </a>
+            <div className="absolute -inset-4 bg-gradient-to-tr from-primary/10 to-accent/10 blur-2xl rounded-full" />
+            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-white/40 backdrop-blur-xl border border-white/40 shadow-xl">
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" 
+                alt="Principal" 
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              />
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
+          >
+            <h2 className="text-4xl md:text-5xl font-black text-primary leading-tight">
+              Pesan dari <br />
+              <span className="text-secondary bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary uppercase">Kepala Sekolah</span>
+            </h2>
+            <p className="text-2xl font-serif italic text-slate-600 leading-relaxed border-l-4 border-secondary pl-6">
+              "Pendidikan bukan sekadar transfer ilmu, melainkan proses membentuk karakter yang siap menghadapi tantangan era digital dengan landasan spiritual yang kokoh."
+            </p>
+            <div>
+              <p className="text-xl font-bold text-primary">Drs. H. Mochammad Zulfikar, M.Si.</p>
+              <p className="text-secondary uppercase tracking-widest text-sm">Kepala Sekolah SMA Darul Ulum 1 Unggulan</p>
+            </div>
+          </motion.div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Stats/About Section */}
+      <section className="py-24 px-6 md:px-20 relative z-10 bg-secondary/5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <LiquidGlassCard>
+            <ShieldCheck className="w-12 h-12 text-primary mb-4" />
+            <h3 className="text-2xl font-bold mb-2">Akreditasi A</h3>
+            <p className="text-slate-600">
+              Menjamin standar pendidikan internasional dengan kurikulum yang terintegrasi antara nasional dan pesantren.
+            </p>
+          </LiquidGlassCard>
+          <LiquidGlassCard>
+            <Zap className="w-12 h-12 text-accent mb-4" />
+            <h3 className="text-2xl font-bold mb-2">Kurikulum Merdeka</h3>
+            <p className="text-slate-600">
+              Pendekatan belajar yang adaptif, fokus pada potensi unik setiap siswa melalui program lintas minat yang inovatif.
+            </p>
+          </LiquidGlassCard>
+          <LiquidGlassCard>
+            <Users className="w-12 h-12 text-primary mb-4" />
+            <h3 className="text-2xl font-bold mb-2">Global Network</h3>
+            <p className="text-slate-600">
+              Kerjasama internasional dengan berbagai universitas ternama untuk peluang beasiswa dan pertukaran pelajar.
+            </p>
+          </LiquidGlassCard>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="py-24 bg-primary relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+        <div className="text-center mb-16 px-6">
+          <h2 className="text-4xl md:text-6xl font-black text-white mb-4">DOKUMENTASI & GALERI</h2>
+          <p className="text-secondary font-serif italic text-lg">Melihat lebih dekat ekosistem belajar yang inspiratif</p>
+        </div>
+        <Animated3DCarousel items={carouselItems} />
+      </section>
+
+      {/* Innovation Section */}
+      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        <NeuralNetworkBackground />
+        <div className="relative z-10 text-center max-w-3xl px-6">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <h2 className="text-4xl md:text-7xl font-black mb-6 text-white uppercase tracking-tighter">
+              Pusat Inovasi <br /> <span className="text-accent">&</span> Teknologi
+            </h2>
+            <p className="text-lg md:text-xl text-secondary font-serif italic mb-10 max-w-xl mx-auto">
+              Kami menghadirkan ekosistem riset yang memungkinkan siswa untuk mengeksplorasi batas-batas sains dan teknologi modern.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {["Robotics", "AI Lab", "Science Hub", "BioTech"].map((item) => (
+                <div key={item} className="bg-white/5 backdrop-blur-md p-4 rounded-xl border border-accent/20 hover:bg-accent/10 transition-colors cursor-pointer group">
+                  <p className="font-bold text-accent group-hover:text-accent-light">{item}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* News & Events Section */}
+      <section className="py-24 px-6 md:px-20 bg-background relative overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div className="space-y-4">
+              <h2 className="text-4xl md:text-6xl font-black text-primary">
+                BERITA <span className="text-secondary">&</span> ACARA
+              </h2>
+              <p className="text-slate-600 font-serif italic text-lg">Informasi terkini seputar prestasi dan kegiatan sekolah</p>
+            </div>
+            <button className="flex items-center gap-2 text-primary font-bold hover:text-secondary transition-colors group">
+              Lihat Semua Berita <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                date: "24 Apr 2024",
+                title: "SMA Darul Ulum 1 Raih Juara Umum Olimpiade Sains Nasional",
+                desc: "Tim riset sekolah berhasil memborong 5 medali emas dalam ajang OSN tingkat provinsi.",
+                img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop"
+              },
+              {
+                date: "12 Apr 2024",
+                title: "Pendaftaran PPDB Gelombang II Resmi Dibuka",
+                desc: "Segera daftarkan diri Anda untuk menjadi bagian dari generasi unggul masa depan.",
+                img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop"
+              },
+              {
+                date: "05 Apr 2024",
+                title: "Kunjungan Industri ke Silicon Valley Asia di BSD City",
+                desc: "Siswa kelas XII melakukan studi banding ke pusat pengembangan teknologi AI dan Robotics.",
+                img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070&auto=format&fit=crop"
+              }
+            ].map((news, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="group cursor-pointer"
+              >
+                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-6 glass border-white/10">
+                  <img src={news.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <div className="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    {news.date}
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors">
+                  {news.title}
+                </h3>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  {news.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-32 px-6 md:px-20 text-center relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 blur-[150px] rounded-full -z-10" />
+        <h2 className="text-4xl md:text-7xl font-black mb-8 text-white">
+          Siap Bergabung dengan <br />
+          <span className="text-gradient">Generasi Unggul?</span>
+        </h2>
+        <p className="text-slate-400 max-w-2xl mx-auto mb-12 text-lg">
+          Jadilah bagian dari perjalanan menuju prestasi global dan masa depan yang cerah bersama SMA Darul Ulum 1 Unggulan. Pendaftaran dibuka untuk tahun ajaran 2024/2025.
+        </p>
+        <button className="px-12 py-5 bg-gradient-to-r from-emerald-600 to-amber-500 text-white rounded-full font-black text-xl hover:scale-110 transition-transform shadow-2xl shadow-emerald-500/30">
+          DAFTAR SEKARANG
+        </button>
+      </section>
+
+      {/* Navigation */}
+      <div className="fixed bottom-10 inset-x-0 z-[100] flex justify-center">
+        <FloatingDock items={dockItems} />
+      </div>
+
+      {/* Footer */}
+      <footer className="py-20 border-t border-white/5 px-6 md:px-20 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm bg-slate-950">
+        <div className="mb-12 md:mb-0 text-center md:text-left space-y-4">
+          <h4 className="text-white font-black text-2xl tracking-tighter">SMA Darul Ulum 1 Unggulan</h4>
+          <p className="max-w-xs">Jl. Rejoso, Peterongan, Jombang, Jawa Timur. <br /> Telp: (0321) 866XXX</p>
+          <div className="flex gap-4 justify-center md:justify-start">
+            <div className="w-8 h-8 rounded-full glass flex items-center justify-center hover:text-emerald-400 transition-colors cursor-pointer italic">f</div>
+            <div className="w-8 h-8 rounded-full glass flex items-center justify-center hover:text-emerald-400 transition-colors cursor-pointer italic">ig</div>
+            <div className="w-8 h-8 rounded-full glass flex items-center justify-center hover:text-emerald-400 transition-colors cursor-pointer italic">yt</div>
+          </div>
+        </div>
+        <div className="flex gap-16">
+          <div className="flex flex-col gap-3">
+            <span className="text-white font-bold uppercase tracking-widest text-xs mb-2">Portal</span>
+            <a href="#" className="hover:text-white transition-colors">Siswa</a>
+            <a href="#" className="hover:text-white transition-colors">Guru</a>
+            <a href="#" className="hover:text-white transition-colors">Alumni</a>
+            <a href="#" className="hover:text-white transition-colors">Wali Murid</a>
+          </div>
+          <div className="flex flex-col gap-3">
+            <span className="text-white font-bold uppercase tracking-widest text-xs mb-2">Layanan</span>
+            <a href="#" className="hover:text-white transition-colors">E-Learning</a>
+            <a href="#" className="hover:text-white transition-colors">Perpustakaan Digital</a>
+            <a href="#" className="hover:text-white transition-colors">PPDB Online</a>
+            <a href="#" className="hover:text-white transition-colors">Konsultasi Karir</a>
+          </div>
+        </div>
+      </footer>
+    </main>
   );
 }
