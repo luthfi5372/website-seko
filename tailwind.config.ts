@@ -11,23 +11,23 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#003147", // Midnight Navy
-          light: "#004360",
+          DEFAULT: "#023047", // Midnight Navy
+          light: "#044361",
         },
         secondary: {
-          DEFAULT: "#700101", // Deep Maroon
-          light: "#8B0000",
+          DEFAULT: "#219EBC", // Electric Teal
+          light: "#8ECAE6",
         },
         accent: {
-          DEFAULT: "#C81420", // Vibrant Red
-          light: "#E31E24",
+          DEFAULT: "#FFB703", // Sunlight Yellow
+          light: "#FB8500",   // Bright Orange
         },
         background: {
-          DEFAULT: "#FFF1D0", // Academic Cream
-          dark: "#003147",    // Midnight Navy
+          DEFAULT: "#F8FBFF", // Sky White
+          dark: "#023047",    // Midnight Navy
         },
-        charcoal: "#003147",
-        steel: "#6A9AB0",   // Steel Blue
+        charcoal: "#023047",
+        sky: "#8ECAE6",
       },
       fontFamily: {
         sans: ["var(--font-montserrat)"],

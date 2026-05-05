@@ -65,12 +65,12 @@ export default function HomePage() {
               "Membangun Masa Depan Berbasis Iman, Ilmu, dan Teknologi"
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-4 pt-8">
-              <button className="px-8 py-3 bg-secondary text-white rounded-xl font-bold hover:bg-primary transition-all hover:scale-105 shadow-xl shadow-secondary/20">
+              <button className="px-8 py-3 bg-accent text-primary rounded-xl font-bold hover:bg-accent-light transition-all hover:scale-105 shadow-xl shadow-accent/20">
                 Pendaftaran PPDB
               </button>
               <LinkPreview 
                 url="https://smadu1-jombang.sch.id" 
-                className="px-8 py-3 bg-white border border-primary/20 text-primary rounded-xl font-bold hover:bg-slate-50 transition-all hover:scale-105 flex items-center justify-center shadow-sm"
+                className="px-8 py-3 bg-white border border-secondary/20 text-secondary rounded-xl font-bold hover:bg-secondary/5 transition-all hover:scale-105 flex items-center justify-center shadow-sm"
               >
                 Jelajahi Fasilitas <ArrowRight className="ml-2 w-4 h-4" />
               </LinkPreview>
@@ -121,7 +121,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats/About Section */}
-      <section className="py-24 px-6 md:px-20 relative z-10 bg-white/40">
+      <section className="py-24 px-6 md:px-20 relative z-10 bg-secondary/5">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           <LiquidGlassCard>
             <ShieldCheck className="w-12 h-12 text-primary mb-4" />
@@ -154,7 +154,7 @@ export default function HomePage() {
           <h2 className="text-4xl md:text-6xl font-black text-primary mb-4">
             <TextScramble text="DOKUMENTASI & GALERI" duration={3} />
           </h2>
-          <p className="text-steel font-serif italic text-lg">Melihat lebih dekat ekosistem belajar yang inspiratif</p>
+          <p className="text-secondary font-serif italic text-lg">Melihat lebih dekat ekosistem belajar yang inspiratif</p>
         </div>
         <Animated3DCarousel items={carouselItems} />
       </section>
@@ -256,7 +256,7 @@ export default function HomePage() {
         <p className="text-slate-600 max-w-2xl mx-auto mb-12 text-lg">
           Jadilah bagian dari perjalanan menuju prestasi global dan masa depan yang cerah bersama SMA Darul Ulum 1 Unggulan. Pendaftaran dibuka untuk tahun ajaran 2024/2025.
         </p>
-        <button className="px-12 py-5 bg-accent text-white rounded-xl font-black text-xl hover:scale-105 transition-transform shadow-2xl shadow-accent/30 uppercase tracking-widest">
+        <button className="px-12 py-5 bg-accent text-primary rounded-xl font-black text-xl hover:scale-105 transition-transform shadow-2xl shadow-accent/30 uppercase tracking-widest">
           DAFTAR SEKARANG
         </button>
       </section>
@@ -267,14 +267,14 @@ export default function HomePage() {
       </div>
 
       {/* Footer */}
-      <footer className="py-20 border-t border-primary/10 px-6 md:px-20 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm bg-white/60">
+      <footer className="py-20 border-t border-secondary/10 px-6 md:px-20 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm bg-white">
         <div className="mb-12 md:mb-0 text-center md:text-left space-y-4">
           <h4 className="text-primary font-black text-2xl tracking-tighter">SMA Darul Ulum 1 Unggulan</h4>
-          <p className="max-w-xs text-primary/60">Jl. Rejoso, Peterongan, Jombang, Jawa Timur. <br /> Telp: (0321) 866XXX</p>
+          <p className="max-w-xs text-slate-500">Jl. Rejoso, Peterongan, Jombang, Jawa Timur. <br /> Telp: (0321) 866XXX</p>
           <div className="flex gap-4 justify-center md:justify-start">
-            <div className="w-8 h-8 rounded-full border border-primary/10 flex items-center justify-center hover:text-secondary transition-colors cursor-pointer italic text-primary/40">f</div>
-            <div className="w-8 h-8 rounded-full border border-primary/10 flex items-center justify-center hover:text-secondary transition-colors cursor-pointer italic text-primary/40">ig</div>
-            <div className="w-8 h-8 rounded-full border border-primary/10 flex items-center justify-center hover:text-secondary transition-colors cursor-pointer italic text-primary/40">yt</div>
+            <div className="w-8 h-8 rounded-full border border-secondary/10 flex items-center justify-center hover:text-secondary transition-colors cursor-pointer italic text-secondary/40">f</div>
+            <div className="w-8 h-8 rounded-full border border-secondary/10 flex items-center justify-center hover:text-secondary transition-colors cursor-pointer italic text-secondary/40">ig</div>
+            <div className="w-8 h-8 rounded-full border border-secondary/10 flex items-center justify-center hover:text-secondary transition-colors cursor-pointer italic text-secondary/40">yt</div>
           </div>
         </div>
         <div className="flex gap-16">
