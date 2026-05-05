@@ -46,10 +46,10 @@ export const Navbar = ({ className }: { className?: string }) => {
       >
         <div className={cn(
           "max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-300",
-          scrolled ? "bg-white/90 backdrop-blur-md py-3 px-8 rounded-full border border-slate-200 shadow-xl" : ""
+          scrolled ? "bg-white/60 backdrop-blur-md py-3 px-8 rounded-full border border-primary/10 shadow-xl" : ""
         )}>
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg shadow-secondary/20 group-hover:scale-110 transition-transform">
+            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">
               D
             </div>
             <div className="hidden md:block">
@@ -63,17 +63,17 @@ export const Navbar = ({ className }: { className?: string }) => {
               <Link 
                 key={item} 
                 href={item === "Beranda" ? "/" : `/${item.toLowerCase()}`}
-                className="text-slate-500 hover:text-secondary text-sm font-bold transition-colors relative group"
+                className="text-slate-600 hover:text-[#C81420] text-sm font-bold transition-colors relative group"
               >
                 {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#C81420] transition-all group-hover:w-full" />
               </Link>
             ))}
           </div>
 
           <Link 
             href="/kontak"
-            className="bg-secondary hover:bg-accent text-white px-6 py-2 rounded-xl text-sm font-black transition-all hover:shadow-lg shadow-secondary/20 active:scale-95"
+            className="bg-[#C81420] hover:bg-[#700101] text-white px-6 py-2 rounded-xl text-sm font-black transition-all hover:shadow-lg shadow-[#C81420]/20 active:scale-95"
           >
             HUBUNGI KAMI
           </Link>

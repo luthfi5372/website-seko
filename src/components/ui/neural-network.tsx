@@ -29,7 +29,7 @@ function NeuralParticles() {
       <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
-          color="#6366F1"
+          color="#003147"
           size={0.02}
           sizeAttenuation={true}
           depthWrite={false}

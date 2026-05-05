@@ -65,12 +65,12 @@ export default function HomePage() {
               "Membangun Masa Depan Berbasis Iman, Ilmu, dan Teknologi"
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-4 pt-8">
-              <button className="px-8 py-3 bg-secondary text-white rounded-xl font-bold hover:bg-accent transition-all hover:scale-105 shadow-xl shadow-secondary/20">
+              <button className="px-8 py-3 bg-secondary text-white rounded-xl font-bold hover:bg-primary transition-all hover:scale-105 shadow-xl shadow-secondary/20">
                 Pendaftaran PPDB
               </button>
               <LinkPreview 
                 url="https://smadu1-jombang.sch.id" 
-                className="px-8 py-3 bg-white border border-slate-200 text-primary rounded-xl font-bold hover:bg-slate-50 transition-all hover:scale-105 flex items-center justify-center shadow-sm"
+                className="px-8 py-3 bg-white border border-primary/20 text-primary rounded-xl font-bold hover:bg-slate-50 transition-all hover:scale-105 flex items-center justify-center shadow-sm"
               >
                 Jelajahi Fasilitas <ArrowRight className="ml-2 w-4 h-4" />
               </LinkPreview>
@@ -121,7 +121,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats/About Section */}
-      <section className="py-24 px-6 md:px-20 relative z-10 bg-slate-50">
+      <section className="py-24 px-6 md:px-20 relative z-10 bg-white/40">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           <LiquidGlassCard>
             <ShieldCheck className="w-12 h-12 text-primary mb-4" />
@@ -148,13 +148,13 @@ export default function HomePage() {
       </section>
 
       {/* Gallery Section */}
-      <section className="py-24 bg-slate-50 relative overflow-hidden">
+      <section className="py-24 bg-primary relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-secondary/50 to-transparent" />
         <div className="text-center mb-16 px-6">
           <h2 className="text-4xl md:text-6xl font-black text-primary mb-4">
             <TextScramble text="DOKUMENTASI & GALERI" duration={3} />
           </h2>
-          <p className="text-secondary font-serif italic text-lg">Melihat lebih dekat ekosistem belajar yang inspiratif</p>
+          <p className="text-steel font-serif italic text-lg">Melihat lebih dekat ekosistem belajar yang inspiratif</p>
         </div>
         <Animated3DCarousel items={carouselItems} />
       </section>
@@ -176,8 +176,8 @@ export default function HomePage() {
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {["Robotics", "AI Lab", "Science Hub", "BioTech"].map((item) => (
-                <div key={item} className="bg-white p-4 rounded-xl border border-slate-200 hover:border-secondary transition-colors cursor-pointer group shadow-sm">
-                  <p className="font-bold text-slate-500 group-hover:text-secondary">{item}</p>
+                <div key={item} className="bg-white p-4 rounded-xl border border-primary/10 hover:border-accent transition-colors cursor-pointer group shadow-sm">
+                  <p className="font-bold text-primary/60 group-hover:text-accent">{item}</p>
                 </div>
               ))}
             </div>
@@ -256,7 +256,7 @@ export default function HomePage() {
         <p className="text-slate-600 max-w-2xl mx-auto mb-12 text-lg">
           Jadilah bagian dari perjalanan menuju prestasi global dan masa depan yang cerah bersama SMA Darul Ulum 1 Unggulan. Pendaftaran dibuka untuk tahun ajaran 2024/2025.
         </p>
-        <button className="px-12 py-5 bg-secondary text-white rounded-xl font-black text-xl hover:scale-105 transition-transform shadow-2xl shadow-secondary/30 uppercase tracking-widest">
+        <button className="px-12 py-5 bg-accent text-white rounded-xl font-black text-xl hover:scale-105 transition-transform shadow-2xl shadow-accent/30 uppercase tracking-widest">
           DAFTAR SEKARANG
         </button>
       </section>
@@ -267,14 +267,14 @@ export default function HomePage() {
       </div>
 
       {/* Footer */}
-      <footer className="py-20 border-t border-slate-200 px-6 md:px-20 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm bg-white">
+      <footer className="py-20 border-t border-primary/10 px-6 md:px-20 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm bg-white/60">
         <div className="mb-12 md:mb-0 text-center md:text-left space-y-4">
           <h4 className="text-primary font-black text-2xl tracking-tighter">SMA Darul Ulum 1 Unggulan</h4>
-          <p className="max-w-xs text-slate-400">Jl. Rejoso, Peterongan, Jombang, Jawa Timur. <br /> Telp: (0321) 866XXX</p>
+          <p className="max-w-xs text-primary/60">Jl. Rejoso, Peterongan, Jombang, Jawa Timur. <br /> Telp: (0321) 866XXX</p>
           <div className="flex gap-4 justify-center md:justify-start">
-            <div className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center hover:text-secondary transition-colors cursor-pointer italic text-slate-400">f</div>
-            <div className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center hover:text-secondary transition-colors cursor-pointer italic text-slate-400">ig</div>
-            <div className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center hover:text-secondary transition-colors cursor-pointer italic text-slate-400">yt</div>
+            <div className="w-8 h-8 rounded-full border border-primary/10 flex items-center justify-center hover:text-secondary transition-colors cursor-pointer italic text-primary/40">f</div>
+            <div className="w-8 h-8 rounded-full border border-primary/10 flex items-center justify-center hover:text-secondary transition-colors cursor-pointer italic text-primary/40">ig</div>
+            <div className="w-8 h-8 rounded-full border border-primary/10 flex items-center justify-center hover:text-secondary transition-colors cursor-pointer italic text-primary/40">yt</div>
           </div>
         </div>
         <div className="flex gap-16">
