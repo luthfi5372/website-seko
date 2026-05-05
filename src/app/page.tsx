@@ -56,17 +56,17 @@ export default function HomePage() {
             className="text-center space-y-6"
           >
             <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-primary">
-              <TextScramble text="SMA DARUL ULUM 1" duration={2} /> <br />
+              <TextScramble text="FUTURE-READY" duration={2} /> <br />
               <span className="text-secondary block mt-2">
-                <TextScramble text="UNGGULAN" duration={2.5} />
+                <TextScramble text="EXCELLENCE" duration={2.5} />
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-600 font-serif italic max-w-2xl mx-auto">
-              "Membangun Masa Depan Berbasis Iman, Ilmu, dan Teknologi"
+              Empowering the Next Generation through Faith, Science, and Innovation.
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-4 pt-8">
               <button className="px-8 py-3 bg-accent text-primary rounded-xl font-bold hover:bg-accent-light transition-all hover:scale-105 shadow-xl shadow-accent/20">
-                Pendaftaran PPDB
+                Join the Future
               </button>
               <LinkPreview 
                 url="https://smadu1-jombang.sch.id" 
@@ -152,9 +152,9 @@ export default function HomePage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-secondary/50 to-transparent" />
         <div className="text-center mb-16 px-6">
           <h2 className="text-4xl md:text-6xl font-black text-primary mb-4">
-            <TextScramble text="DOKUMENTASI & GALERI" duration={3} />
+            <TextScramble text="DIGITAL CHRONICLES" duration={3} />
           </h2>
-          <p className="text-secondary font-serif italic text-lg">Melihat lebih dekat ekosistem belajar yang inspiratif</p>
+          <p className="text-secondary font-serif italic text-lg">Visualizing our journey toward global excellence</p>
         </div>
         <Animated3DCarousel items={carouselItems} />
       </section>
@@ -169,10 +169,10 @@ export default function HomePage() {
             transition={{ duration: 1 }}
           >
             <h2 className="text-4xl md:text-7xl font-black mb-6 text-primary uppercase tracking-tighter">
-              Pusat Inovasi <br /> <span className="text-secondary">&</span> Teknologi
+              Innovation <br /> <span className="text-secondary">&</span> Hub
             </h2>
             <p className="text-lg md:text-xl text-secondary font-serif italic mb-10 max-w-xl mx-auto">
-              Kami menghadirkan ekosistem riset yang memungkinkan siswa untuk mengeksplorasi batas-batas sains dan teknologi modern.
+              Designing the future where faith meets cutting-edge technology.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {["Robotics", "AI Lab", "Science Hub", "BioTech"].map((item) => (
@@ -257,7 +257,7 @@ export default function HomePage() {
           Jadilah bagian dari perjalanan menuju prestasi global dan masa depan yang cerah bersama SMA Darul Ulum 1 Unggulan. Pendaftaran dibuka untuk tahun ajaran 2024/2025.
         </p>
         <button className="px-12 py-5 bg-accent text-primary rounded-xl font-black text-xl hover:scale-105 transition-transform shadow-2xl shadow-accent/30 uppercase tracking-widest">
-          DAFTAR SEKARANG
+          ENROLL NOW
         </button>
       </section>
 
