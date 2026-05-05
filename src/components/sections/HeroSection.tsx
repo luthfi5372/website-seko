@@ -4,17 +4,11 @@ import { AuroraBackground } from "@/components/ui/aurora-background";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { FlipWords } from "@/components/ui/flip-words";
 import Link from "next/link";
 
 export const HeroSection = () => {
-  const words = [
-    { text: "Empowering" },
-    { text: "the" },
-    { text: "Next" },
-    { text: "Generation" },
-    { text: "through" },
-    { text: "Innovation.", className: "text-secondary font-black" },
-  ];
+  const words = ["Inovatif", "Religius", "Berprestasi", "Global"];
 
   return (
     <AuroraBackground>
@@ -37,9 +31,12 @@ export const HeroSection = () => {
           <span className="text-secondary italic">UNGGULAN.</span>
         </h1>
         
-        <TypewriterEffect words={words} className="mt-4 mb-8" />
-        
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="text-xl md:text-3xl font-medium text-slate-600 max-w-2xl text-center">
+          Sekolah yang <FlipWords words={words} className="text-secondary font-black" />
+        </div>
+        <p className="text-lg text-slate-500 max-w-lg text-center font-medium leading-relaxed">
+          Empowering the next generation through a unique blend of high-tech innovation and spiritual foundation.
+        </p>
           <Link href="/ppdb" className="px-8 py-4 bg-primary text-white rounded-xl font-bold hover:bg-secondary transition-all hover:scale-105 shadow-xl shadow-primary/20 flex items-center gap-2 group">
             Apply Now <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
