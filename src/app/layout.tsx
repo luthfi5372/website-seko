@@ -32,8 +32,6 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${playfair.variable} antialiased bg-background text-primary selection:bg-accent/10 overflow-x-hidden`}
       >
-        <CustomCursor />
-        <ScrollProgress />
         <Navbar />
         {children}
       </body>

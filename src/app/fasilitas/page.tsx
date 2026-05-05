@@ -1,22 +1,11 @@
-"use client";
-
-import { FloatingDock } from "@/components/ui/floating-dock";
-import { WavyBackground } from "@/components/ui/wavy-background";
-import { FlaskConical, Library, Microchip, Trophy, Wifi, Coffee } from "lucide-react";
-import { motion } from "framer-motion";
-import { LiquidGlassCard } from "@/components/ui/liquid-glass-card";
-import { NAV_ITEMS } from "@/lib/constants";
+import { FlaskConical, Library, Microchip, Trophy, Wifi, Coffee, ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 export default function FasilitasPage() {
-  const dockItems = NAV_ITEMS.map(item => ({
-    ...item,
-    icon: <item.icon className="w-4 h-4" />
-  }));
-
   const facilities = [
     {
       title: "Smart Laboratory",
-      icon: <FlaskConical className="w-8 h-8 text-primary" />,
+      icon: <FlaskConical className="w-8 h-8 text-secondary" />,
       desc: "Integrated labs with IoT sensors and VR simulations for immersive STEM learning.",
       img: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?q=80&w=2070&auto=format&fit=crop"
     },
@@ -28,7 +17,7 @@ export default function FasilitasPage() {
     },
     {
       title: "Robotics & AI Center",
-      icon: <Microchip className="w-8 h-8 text-primary" />,
+      icon: <Microchip className="w-8 h-8 text-secondary" />,
       desc: "Advanced robotics hub featuring the latest DJI, Arduino, and Raspberry Pi technology.",
       img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop"
     },
@@ -40,7 +29,7 @@ export default function FasilitasPage() {
     },
     {
       title: "High-Speed Campus Wifi",
-      icon: <Wifi className="w-8 h-8 text-primary" />,
+      icon: <Wifi className="w-8 h-8 text-secondary" />,
       desc: "Ultra-fast 1Gbps fiber-optic network covering the entire campus infrastructure.",
       img: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2070&auto=format&fit=crop"
     },
@@ -53,43 +42,37 @@ export default function FasilitasPage() {
   ];
 
   return (
-    <main className="relative min-h-screen bg-background">
-      <section className="relative h-[40vh] flex items-center justify-center bg-primary overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle, #219EBC 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
-        <h1 className="relative z-10 text-5xl md:text-7xl font-black text-white text-center px-6">
-          WORLD-CLASS <span className="text-secondary">FACILITIES</span>
-        </h1>
-      </section>
+    <main className="min-h-screen bg-white text-[#023047]">
+      <div className="max-w-7xl mx-auto px-6 py-20">
+        <Link href="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-secondary mb-12 font-bold transition-colors">
+          <ArrowLeft className="w-4 h-4" /> Back to Home
+        </Link>
+        
+        <div className="mb-20">
+          <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-4">CAMPUS FACILITIES</h1>
+          <p className="text-xl text-slate-500 font-medium">World-class infrastructure for a world-class education.</p>
+        </div>
 
-      <section className="py-24 px-6 md:px-20 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {facilities.map((fac, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-            >
-              <LiquidGlassCard className="h-full group hover:border-secondary/50 transition-colors">
-                <div className="relative aspect-video rounded-2xl overflow-hidden mb-6 border border-primary/5 shadow-sm">
-                  <img src={fac.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
-                  <div className="absolute bottom-4 left-4 p-3 bg-white/90 backdrop-blur-md rounded-xl border border-white/40 shadow-lg">
-                    {fac.icon}
-                  </div>
+            <div key={idx} className="group">
+              <div className="aspect-video rounded-2xl overflow-hidden mb-6 bg-slate-100 relative shadow-sm">
+                <img 
+                  src={fac.img} 
+                  alt={fac.title} 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                />
+                <div className="absolute top-4 left-4 p-3 bg-white rounded-xl shadow-lg">
+                  {fac.icon}
                 </div>
-                <h3 className="text-2xl font-black text-primary mb-3">{fac.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed font-serif">
-                  {fac.desc}
-                </p>
-              </LiquidGlassCard>
-            </motion.div>
+              </div>
+              <h3 className="text-2xl font-black mb-3">{fac.title}</h3>
+              <p className="text-slate-500 leading-relaxed text-sm">
+                {fac.desc}
+              </p>
+            </div>
           ))}
         </div>
-      </section>
-
-      <div className="fixed bottom-10 inset-x-0 z-[100] flex justify-center">
-        <FloatingDock items={dockItems} />
       </div>
     </main>
   );

@@ -1,84 +1,56 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
-export const Navbar = ({ className }: { className?: string }) => {
-  const { scrollY } = useScroll();
-  const [visible, setVisible] = useState(true);
+export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    return scrollY.on("change", (current) => {
-      // Previous value check
-      const previous = scrollY.getPrevious() || 0;
-      
-      if (current > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-      if (current > previous && current > 150) {
-        setVisible(false);
-      } else {
-        setVisible(true);
-      }
-    });
-  }, [scrollY]);
+  const menuItems = ["Beranda", "Akademik", "Prestasi", "Fasilitas", "PPDB"];
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.nav
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ 
-          y: visible ? 0 : -100, 
-          opacity: visible ? 1 : 0 
-        }}
-        transition={{ duration: 0.3 }}
-        className={cn(
-          "fixed top-0 inset-x-0 z-[150] transition-all duration-300",
-          scrolled ? "py-4" : "py-8",
-          className
-        )}
-      >
-        <div className={cn(
-          "max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-300",
-          scrolled ? "bg-white/60 backdrop-blur-md py-3 px-8 rounded-full border border-primary/10 shadow-xl" : ""
-        )}>
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">
-              D
-            </div>
-            <div className="hidden md:block">
-              <span className="text-primary font-black tracking-tighter text-lg leading-none block">SMADU 1</span>
-              <span className="text-secondary font-bold text-[10px] tracking-[0.2em] uppercase">Unggulan Jombang</span>
-            </div>
-          </Link>
-
-          <div className="hidden md:flex items-center gap-8">
-            {["Beranda", "Akademik", "Prestasi", "Fasilitas", "Galeri", "PPDB"].map((item) => (
-              <Link 
-                key={item} 
-                href={item === "Beranda" ? "/" : `/${item.toLowerCase()}`}
-                className="text-slate-600 hover:text-[#C81420] text-sm font-bold transition-colors relative group"
-              >
-                {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#C81420] transition-all group-hover:w-full" />
-              </Link>
-            ))}
+    <nav className={cn(
+      "fixed top-0 inset-x-0 z-[100] transition-all duration-300 px-6 py-4",
+      scrolled ? "bg-white/80 backdrop-blur-md border-b border-slate-200 py-3" : "bg-transparent"
+    )}>
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-[#023047] rounded-xl flex items-center justify-center text-white font-black text-xl">
+            D
           </div>
+          <div className="hidden md:block">
+            <span className="text-[#023047] font-black tracking-tighter text-lg leading-none block">SMADU 1</span>
+            <span className="text-[#219EBC] font-bold text-[10px] tracking-[0.2em] uppercase">Unggulan Jombang</span>
+          </div>
+        </Link>
 
+        <div className="hidden md:flex items-center gap-8">
+          {menuItems.map((item) => (
+            <Link 
+              key={item} 
+              href={item === "Beranda" ? "/" : `/${item.toLowerCase()}`}
+              className="text-slate-500 hover:text-[#219EBC] text-sm font-bold transition-colors"
+            >
+              {item}
+            </Link>
+          ))}
           <Link 
-            href="/kontak"
-            className="bg-[#C81420] hover:bg-[#700101] text-white px-6 py-2 rounded-xl text-sm font-black transition-all hover:shadow-lg shadow-[#C81420]/20 active:scale-95"
+            href="/ppdb"
+            className="bg-[#023047] text-white px-6 py-2 rounded-xl text-sm font-black hover:bg-[#219EBC] transition-colors"
           >
-            HUBUNGI KAMI
+            ENROLL NOW
           </Link>
         </div>
-      </motion.nav>
-    </AnimatePresence>
+      </div>
+    </nav>
   );
 };
