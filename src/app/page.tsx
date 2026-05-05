@@ -56,10 +56,8 @@ export default function HomePage() {
             className="text-center space-y-6"
           >
             <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-primary">
-              <TextScramble text="FUTURE-READY" duration={2} /> <br />
-              <span className="text-secondary block mt-2">
-                <TextScramble text="EXCELLENCE" duration={2.5} />
-              </span>
+              FUTURE-READY <br />
+              <span className="text-secondary block mt-2">EXCELLENCE</span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-600 font-serif italic max-w-2xl mx-auto">
               Empowering the Next Generation through Faith, Science, and Innovation.
@@ -104,10 +102,8 @@ export default function HomePage() {
             className="space-y-8"
           >
             <h2 className="text-4xl md:text-5xl font-black text-primary leading-tight">
-              <TextScramble text="Pesan dari" duration={2} /> <br />
-              <span className="text-secondary uppercase">
-                <TextScramble text="Kepala Sekolah" duration={2.5} />
-              </span>
+              Pesan dari <br />
+              <span className="text-secondary uppercase">Kepala Sekolah</span>
             </h2>
             <p className="text-2xl font-serif italic text-slate-600 leading-relaxed border-l-4 border-secondary pl-6">
               "Pendidikan bukan sekadar transfer ilmu, melainkan proses membentuk karakter yang siap menghadapi tantangan era digital dengan landasan spiritual yang kokoh."
@@ -151,17 +147,15 @@ export default function HomePage() {
       <section className="py-24 bg-primary relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-secondary/50 to-transparent" />
         <div className="text-center mb-16 px-6">
-          <h2 className="text-4xl md:text-6xl font-black text-primary mb-4">
-            <TextScramble text="DIGITAL CHRONICLES" duration={3} />
-          </h2>
+          <h2 className="text-4xl md:text-6xl font-black text-primary mb-4">DIGITAL CHRONICLES</h2>
           <p className="text-secondary font-serif italic text-lg">Visualizing our journey toward global excellence</p>
         </div>
         <Animated3DCarousel items={carouselItems} />
       </section>
 
-      {/* Innovation Section */}
-      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-        <NeuralNetworkBackground />
+      {/* Innovation Section - Simplified Background */}
+      <section className="relative py-32 flex items-center justify-center overflow-hidden bg-white">
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#023047 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
         <div className="relative z-10 text-center max-w-3xl px-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}

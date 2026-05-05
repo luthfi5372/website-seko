@@ -54,12 +54,11 @@ export default function FasilitasPage() {
 
   return (
     <main className="relative min-h-screen bg-background">
-      <section className="relative h-[50vh] overflow-hidden">
-        <WavyBackground speed="slow" containerClassName="h-full">
-          <h1 className="text-5xl md:text-7xl font-black text-primary text-center px-6">
-            WORLD-CLASS <span className="text-secondary">FACILITIES</span>
-          </h1>
-        </WavyBackground>
+      <section className="relative h-[40vh] flex items-center justify-center bg-primary overflow-hidden">
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle, #219EBC 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
+        <h1 className="relative z-10 text-5xl md:text-7xl font-black text-white text-center px-6">
+          WORLD-CLASS <span className="text-secondary">FACILITIES</span>
+        </h1>
       </section>
 
       <section className="py-24 px-6 md:px-20 max-w-7xl mx-auto">
