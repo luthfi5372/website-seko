@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import { ScrollProgress } from "@/components/ui/scroll-progress";
-import { CustomCursor } from "@/components/ui/custom-cursor";
-import { Navbar } from "@/components/ui/navbar";
+import { Navbar } from "@/components/shared/Navbar";
+import { Footer } from "@/components/shared/Footer";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -34,6 +33,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
