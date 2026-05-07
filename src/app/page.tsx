@@ -3,6 +3,7 @@
 import { HeroSection } from "@/components/sections/HeroSection";
 import { TrustedBy } from "@/components/sections/TrustedBy";
 import { FeaturesSection } from "@/components/sections/FeaturesSection";
+import { FacilityGallery } from "@/components/sections/FacilityGallery";
 import { EventsSection } from "@/components/sections/EventsSection";
 import { ProgramUnggulan } from "@/components/sections/ProgramUnggulan";
 import { StatsSection } from "@/components/sections/StatsSection";
@@ -15,6 +16,7 @@ export default function Home() {
       <HeroSection />
       <TrustedBy />
       <FeaturesSection />
+      <FacilityGallery />
       <EventsSection />
       <ProgramUnggulan />
       <NewsSection />
