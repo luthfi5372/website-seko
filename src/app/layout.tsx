@@ -21,16 +21,19 @@ export const metadata: Metadata = {
   description: "Official Website of SMA Darul Ulum 1 Unggulan. Premium academic education with a modern spiritual foundation.",
 };
 
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id">
+    <html lang="id" className="scroll-smooth">
       <body
         className={`${plusJakartaSans.variable} ${playfair.variable} antialiased bg-background-light text-slate-800 selection:bg-secondary-soft/30 overflow-x-hidden`}
       >
+        <ScrollProgress />
         <Navbar />
         {children}
         <Footer />
