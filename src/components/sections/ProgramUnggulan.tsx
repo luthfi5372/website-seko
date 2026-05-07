@@ -1,6 +1,7 @@
 "use client";
 
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
+import { StaggeredGrid } from "@/components/ui/staggered-grid";
 import { 
   IconFlask, 
   IconCpu, 
@@ -29,11 +30,8 @@ export const ProgramUnggulan = () => {
       title: "AI & Robotics Hub",
       description: "Pusat rekayasa robotika terintegrasi dengan kecerdasan buatan.",
       header: (
-        <div className="flex flex-1 w-full h-[150px] min-h-[6rem] rounded-2xl bg-gradient-to-tr from-[#B5E2FA]/20 to-[#FFCAD4]/30 border border-blue-100/50 relative overflow-hidden group-hover/bento:scale-[1.02] transition-transform duration-500">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-white/40 backdrop-blur-md border border-white/50 flex items-center justify-center shadow-sm">
-            <IconCpu size={28} className="text-blue-500" />
-          </div>
-          <div className="absolute bottom-4 left-4 w-6 h-6 rounded-full bg-blue-300/20 blur-sm" />
+        <div className="w-full h-[150px] min-h-[6rem] rounded-2xl overflow-hidden group-hover/bento:scale-[1.02] transition-transform duration-500">
+          <StaggeredGrid />
         </div>
       ),
       icon: <IconCpu size={18} className="text-blue-500" />,
