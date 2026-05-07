@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Montserrat, Playfair_Display } from "next/font/google";
+import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/shared/Footer";
 
-const montserrat = Montserrat({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-montserrat",
-  weight: ["400", "700", "900"],
+  variable: "--font-plus-jakarta-sans",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const playfair = Playfair_Display({
@@ -17,8 +17,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "SMA Darul Ulum 1 Unggulan | Futuristic Education",
-  description: "Official Website of SMA Darul Ulum 1 Unggulan. Experience futuristic education with global standards.",
+  title: "SMA Darul Ulum 1 Unggulan | Academic Excellence Profile",
+  description: "Official Website of SMA Darul Ulum 1 Unggulan. Premium academic education with a modern spiritual foundation.",
 };
 
 export default function RootLayout({
@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body
-        className={`${montserrat.variable} ${playfair.variable} antialiased bg-background text-primary selection:bg-accent/10 overflow-x-hidden`}
+        className={`${plusJakartaSans.variable} ${playfair.variable} antialiased bg-background-light text-slate-800 selection:bg-secondary-soft/30 overflow-x-hidden`}
       >
         <Navbar />
         {children}

@@ -1,18 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #023047;
-  --color-primary-light: #044361;
-  --color-secondary: #219EBC;
-  --color-secondary-light: #8ECAE6;
-  --color-accent: #FFB703;
-  --color-accent-light: #FB8500;
-  --color-background: #F8FBFF;
-  --color-background-dark: #023047;
-  --color-charcoal: #023047;
-  --color-sky: #8ECAE6;
+  --color-primary: #1F2937; /* Dark Slate Gray instead of Midnight Navy */
+  --color-primary-light: #374151;
+  --color-secondary: #FF8E9E; /* Clean Coral Pink */
+  --color-secondary-light: #FFCAD4; /* Soft Pink */
+  --color-accent: #FFB5A7; /* Soft Peach */
+  --color-accent-light: #FCD5CE;
+  --color-background: #FFFFFF;
+  --color-background-dark: #0F172A;
   
-  --font-sans: var(--font-montserrat);
+  /* SaaS Pastel Palette Specifics */
+  --color-primary-soft: #FFB5A7;
+  --color-secondary-soft: #FFCAD4;
+  --color-accent-soft: #B5E2FA; /* Soft Pastel Blue */
+  --color-background-light: #FAFAFA;
+  --color-background-warm: #FFF8F6;
+  --color-text-main: #1F2937;
+  --color-text-muted: #6B7280;
+  
+  --font-sans: var(--font-plus-jakarta-sans);
   --font-serif: var(--font-playfair);
 }
 
@@ -22,32 +29,33 @@
   }
 
   body {
-    @apply bg-background text-primary font-sans antialiased selection:bg-secondary/20;
+    @apply bg-background-light text-text-main font-sans antialiased selection:bg-secondary-soft/30;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-black tracking-tight text-primary;
+    @apply font-black tracking-tight text-text-main;
   }
 }
 
 @layer components {
+  /* Dynamic Glassmorphism for Light Mode */
   .glass {
-    @apply bg-white/70 backdrop-blur-md border border-secondary/10 shadow-sm;
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-sm;
   }
   
   .glass-dark {
-    @apply bg-primary/95 backdrop-blur-md border border-white/5 shadow-xl;
+    @apply bg-slate-900/90 backdrop-blur-md border border-white/5 shadow-xl;
   }
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-background;
+  @apply bg-background-light;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-secondary/30 rounded-full hover:bg-secondary/50 transition-colors;
+  @apply bg-slate-200 rounded-full hover:bg-slate-300 transition-colors;
 }
