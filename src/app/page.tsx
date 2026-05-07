@@ -6,8 +6,8 @@ import { FeaturesSection } from "@/components/sections/FeaturesSection";
 import { FacilityGallery } from "@/components/sections/FacilityGallery";
 import { EventsSection } from "@/components/sections/EventsSection";
 import { ProgramUnggulan } from "@/components/sections/ProgramUnggulan";
-import { StatsSection } from "@/components/sections/StatsSection";
 import { NewsSection } from "@/components/sections/NewsSection";
+import { VisionAndStats } from "@/components/sections/VisionAndStats";
 import { CallToAction } from "@/components/sections/CallToAction";
 
 export default function Home() {
@@ -20,7 +20,7 @@ export default function Home() {
       <EventsSection />
       <ProgramUnggulan />
       <NewsSection />
-      <StatsSection />
+      <VisionAndStats />
       <CallToAction />
     </main>
   );
