@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { 
   IconNetwork, 
   IconCpu, 
@@ -15,6 +15,19 @@ import {
 import Link from "next/link";
 
 export const FeaturesSection = () => {
+  // References for target scroll tracking
+  const chartCardRef = useRef<HTMLDivElement>(null);
+
+  // Monitor scroll progression specifically for the chart container element
+  const { scrollYProgress } = useScroll({
+    target: chartCardRef,
+    offset: ["start end", "center center"], // Starts when top enters bottom, completes when center hits center of screen
+  });
+
+  // Transform scroll progress (0 to 1) into path draw length and element opacity
+  const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.7, 1], [0, 1, 1]);
+
   return (
     <section className="w-full py-24 bg-[#FAFAFA] font-sans relative overflow-hidden">
       
@@ -142,11 +155,9 @@ export const FeaturesSection = () => {
              </div>
           </div>
 
-          {/* Master Chart Card */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+          {/* Master Chart Card - Tracks Scroll Status */}
+          <div 
+            ref={chartCardRef}
             className="w-full bg-white rounded-[2rem] p-6 md:p-10 border border-slate-100 shadow-[0_15px_40px_rgba(0,0,0,0.015)] relative overflow-hidden"
           >
              <div className="relative z-10 flex flex-col sm:flex-row justify-between items-start gap-4 mb-10 text-left">
@@ -155,7 +166,7 @@ export const FeaturesSection = () => {
                      <IconCircleCheckFilled className="text-rose-500" size={16} />
                      Persentase Kelulusan UTBK / SNBT
                    </h4>
-                   <p className="text-xs text-slate-400 font-semibold">Memvisualisasikan keunggulan bimbingan intensif alumni.</p>
+                   <p className="text-xs text-slate-400 font-semibold">Scroll perlahan bolak-balik untuk menyaksikan jalur grafik tergambar interaktif!</p>
                 </div>
                 <div className="text-left sm:text-right">
                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">Tahun Evaluasi</span>
@@ -173,17 +184,28 @@ export const FeaturesSection = () => {
                     </linearGradient>
                   </defs>
                   
+                  {/* Static thin background guideline so graph shape is visible before scroll */}
+                  <path 
+                    d="M0,170 C200,165 300,135 500,120 C700,105 800,45 1000,20" 
+                    fill="none" 
+                    stroke="#FFE2E2" 
+                    strokeWidth="3" 
+                    strokeLinecap="round" 
+                  />
+
                   {/* Shaded Area Below Line */}
                   <path 
                     d="M0,170 C200,165 300,135 500,120 C700,105 800,45 1000,20 L1000,200 L0,200 Z" 
                     fill="url(#gradientGraph)" 
+                    opacity="0.5"
                   />
                   
-                  {/* Draw-on Main Chart Path */}
+                  {/* Scroll-Linked Main Chart Path */}
                   <motion.path 
-                    initial={{ pathLength: 0 }}
-                    whileInView={{ pathLength: 1 }}
-                    transition={{ duration: 1.6, ease: "easeInOut" }}
+                    style={{ 
+                      pathLength: pathLength, 
+                      opacity: opacity 
+                    }}
                     d="M0,170 C200,165 300,135 500,120 C700,105 800,45 1000,20" 
                     fill="none" 
                     stroke="#F43F5E" 
@@ -191,21 +213,42 @@ export const FeaturesSection = () => {
                     strokeLinecap="round" 
                   />
 
-                  {/* Node Anchor Points */}
-                  <circle cx="500" cy="120" r="5" fill="#F43F5E" stroke="white" strokeWidth="2.5" className="drop-shadow" />
-                  <circle cx="1000" cy="20" r="7.5" fill="#F43F5E" stroke="white" strokeWidth="3" className="drop-shadow-lg" />
+                  {/* Node Anchor Points linking dynamically to scroll percentage */}
+                  <motion.circle 
+                    style={{ opacity }}
+                    cx="500" 
+                    cy="120" 
+                    r="5" 
+                    fill="#F43F5E" 
+                    stroke="white" 
+                    strokeWidth="2.5" 
+                    className="drop-shadow" 
+                  />
+                  <motion.circle 
+                    style={{ opacity }}
+                    cx="1000" 
+                    cy="20" 
+                    r="7.5" 
+                    fill="#F43F5E" 
+                    stroke="white" 
+                    strokeWidth="3" 
+                    className="drop-shadow-lg" 
+                  />
                 </svg>
 
                 {/* Floating details badge over chart vector */}
-                <div className="absolute right-[5%] top-[-10px] sm:top-0 bg-white border border-slate-100 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex items-center gap-3 animate-bounce-slow">
+                <motion.div 
+                  style={{ opacity }}
+                  className="absolute right-[5%] top-[-10px] sm:top-0 bg-white border border-slate-100 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex items-center gap-3 animate-bounce-slow"
+                >
                    <div className="h-9 w-1 bg-rose-500 rounded-full shrink-0" />
                    <div className="text-left">
                      <p className="text-xs font-black text-slate-900 leading-none">Meningkat Tajam</p>
                      <p className="text-[10px] text-slate-400 font-bold mt-1">98.4% Angkatan 2026</p>
                    </div>
-                </div>
+                </motion.div>
              </div>
-          </motion.div>
+          </div>
         </div>
 
       </div>
