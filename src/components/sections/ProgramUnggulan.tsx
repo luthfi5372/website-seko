@@ -1,43 +1,93 @@
 "use client";
 
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
-import { FlaskConical, Microchip, BookOpen, Binary } from "lucide-react";
+import { 
+  IconFlask, 
+  IconCpu, 
+  IconBook, 
+  IconCode, 
+  IconSparkles 
+} from "@tabler/icons-react";
 
 export const ProgramUnggulan = () => {
+  // Beautiful custom headers with premium soft-SaaS glowing gradients and glass elements
   const bentoItems = [
     {
       title: "Smart Laboratory",
-      description: "Fasilitas riset berbasis IoT dengan peralatan medis dan sains mutakhir.",
-      header: <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 to-neutral-100" />,
-      icon: <FlaskConical className="h-4 w-4 text-neutral-500" />,
+      description: "Fasilitas riset sains dan IoT tingkat lanjut yang dilengkapi teknologi mutakhir.",
+      header: (
+        <div className="flex flex-1 w-full h-[150px] min-h-[6rem] rounded-2xl bg-gradient-to-tr from-[#FFB5A7]/20 to-[#FFCAD4]/30 border border-rose-100/50 relative overflow-hidden group-hover/bento:scale-[1.02] transition-transform duration-500">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-white/40 backdrop-blur-md border border-white/50 flex items-center justify-center shadow-sm">
+            <IconFlask size={28} className="text-rose-500" />
+          </div>
+          <div className="absolute top-4 right-4 w-4 h-4 rounded-full bg-rose-400/20 blur-sm animate-pulse" />
+        </div>
+      ),
+      icon: <IconFlask size={18} className="text-rose-500" />,
     },
     {
       title: "AI & Robotics Hub",
-      description: "Pusat pengembangan kecerdasan buatan dan robotika berskala internasional.",
-      header: <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 to-neutral-100" />,
-      icon: <Microchip className="h-4 w-4 text-neutral-500" />,
+      description: "Pusat rekayasa robotika terintegrasi dengan kecerdasan buatan.",
+      header: (
+        <div className="flex flex-1 w-full h-[150px] min-h-[6rem] rounded-2xl bg-gradient-to-tr from-[#B5E2FA]/20 to-[#FFCAD4]/30 border border-blue-100/50 relative overflow-hidden group-hover/bento:scale-[1.02] transition-transform duration-500">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-white/40 backdrop-blur-md border border-white/50 flex items-center justify-center shadow-sm">
+            <IconCpu size={28} className="text-blue-500" />
+          </div>
+          <div className="absolute bottom-4 left-4 w-6 h-6 rounded-full bg-blue-300/20 blur-sm" />
+        </div>
+      ),
+      icon: <IconCpu size={18} className="text-blue-500" />,
     },
     {
       title: "Digital Library",
-      description: "Akses tanpa batas ke ribuan jurnal dan e-book dari seluruh dunia.",
-      header: <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 to-neutral-100" />,
-      icon: <BookOpen className="h-4 w-4 text-neutral-500" />,
+      description: "Akses jurnal ilmiah global, e-book, dan pustaka digital tak terbatas.",
+      header: (
+        <div className="flex flex-1 w-full h-[150px] min-h-[6rem] rounded-2xl bg-gradient-to-tr from-indigo-100/30 to-purple-100/30 border border-indigo-100/50 relative overflow-hidden group-hover/bento:scale-[1.02] transition-transform duration-500">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-white/40 backdrop-blur-md border border-white/50 flex items-center justify-center shadow-sm">
+            <IconBook size={28} className="text-indigo-500" />
+          </div>
+          <div className="absolute top-4 left-4 w-5 h-5 rounded-full bg-indigo-300/20 blur-sm" />
+        </div>
+      ),
+      icon: <IconBook size={18} className="text-indigo-500" />,
     },
     {
       title: "Quantum Coding",
-      description: "Kurikulum pemrograman tingkat lanjut berbasis industri teknologi modern.",
-      header: <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 to-neutral-100" />,
-      icon: <Binary className="h-4 w-4 text-neutral-500" />,
+      description: "Kurikulum pengembangan perangkat lunak tingkat tinggi yang tersertifikasi industri.",
+      header: (
+        <div className="flex flex-1 w-full h-[150px] min-h-[6rem] rounded-2xl bg-gradient-to-tr from-sky-100/30 to-emerald-100/30 border border-emerald-100/50 relative overflow-hidden group-hover/bento:scale-[1.02] transition-transform duration-500">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-white/40 backdrop-blur-md border border-white/50 flex items-center justify-center shadow-sm">
+            <IconCode size={28} className="text-emerald-500" />
+          </div>
+          <div className="absolute bottom-4 right-4 w-5 h-5 rounded-full bg-emerald-400/20 blur-sm" />
+        </div>
+      ),
+      icon: <IconCode size={18} className="text-emerald-500" />,
     },
   ];
 
   return (
-    <section className="py-32 px-6 md:px-20 bg-slate-50 relative z-10">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-20 space-y-4">
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase">PREMIUM ECOSYSTEM</h2>
-          <p className="text-slate-500 max-w-xl font-medium">World-class facilities designed for the next generation of innovators.</p>
+    <section className="py-24 px-8 bg-[#FAFAFA] relative z-10 font-sans border-t border-slate-100/50">
+      
+      {/* Soft Background Blurs */}
+      <div className="absolute top-[10%] right-[-10%] w-[350px] h-[350px] bg-rose-200/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-[10%] left-[-10%] w-[350px] h-[350px] bg-indigo-200/10 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto text-center space-y-16">
+        
+        {/* Title and Category Header Badge */}
+        <div className="text-center space-y-3">
+          <span className="text-[10px] font-black uppercase tracking-[0.25em] text-indigo-500 bg-indigo-50 px-3.5 py-1.5 rounded-full border border-indigo-100 inline-flex items-center gap-1.5 shadow-sm">
+            <IconSparkles size={11} /> Ekosistem Unggulan
+          </span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Eksplorasi Tanpa Batas
+          </h2>
+          <p className="text-sm md:text-base text-slate-500 max-w-xl mx-auto font-medium">
+            Program penunjang terpadu yang dirancang khusus untuk memperlengkapi lulusan dengan kemampuan teknologi mutakhir.
+          </p>
         </div>
+
         <BentoGrid>
           {bentoItems.map((item, i) => (
             <BentoGridItem
