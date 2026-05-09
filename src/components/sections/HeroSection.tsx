@@ -13,10 +13,19 @@ import {
   IconClock,
   IconTrophy,
   IconAward,
-  IconBuildingCommunity
+  IconBuildingCommunity,
+  IconQuote
 } from "@tabler/icons-react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import Link from "next/link";
+
+const testimonials = [
+  { name: "Ahmad Rizky", univ: "Kedokteran Universitas Indonesia", quote: "Pondok Pesantren Darul Ulum tidak hanya membekali saya dengan ilmu pasti, tapi ketangguhan mental untuk bersaing di kampus kuning." },
+  { name: "Nabila Zahra", univ: "Teknik Informatika ITS", quote: "Fasilitas Smart Lab dan bimbingan IT di SMA DU 1 membuat saya selangkah lebih maju dari mahasiswa lain di kelas algoritma." },
+  { name: "Fikri Haikal", univ: "Hubungan Internasional UGM", quote: "Pengalaman berdebat di English Festival NCC membentuk public speaking saya. DU1 luar biasa!" },
+  { name: "Siti Aisyah", univ: "Farmasi Universitas Airlangga", quote: "Integrasi ilmu agama dan sains modern sangat membekas. Saya siap menjadi tenaga medis yang berakhlak." },
+  { name: "Bima Arya", univ: "Teknik Sipil Brawijaya", quote: "Guru-guru DU 1 selalu mendorong kami untuk research dan ikut LKTI. Itu jadi bekal emas saya di dunia perkuliahan." },
+];
 
 export const HeroSection = () => {
   // Pull live vertical scroll coordinates
@@ -329,46 +338,43 @@ export const HeroSection = () => {
         </motion.div>
       </main>
  
-      {/* 4. Logo Cloud Section (Social Proof / Alumni accepted) */}
-      <footer className="w-full bg-white border-t border-slate-100 py-12 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 text-center space-y-6">
+      {/* 4. Infinite Marquee "Suara Alumni" Section (Social Proof) */}
+      <footer className="w-full bg-white border-t border-slate-100 py-12 relative z-10 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 text-center space-y-8">
           <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.25em] text-slate-400">
-            Alumni Kami Diterima di Perguruan Tinggi Terkemuka & Mitra Global
+            Jejak Keunggulan Alumni di Perguruan Tinggi Global
           </p>
           
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+          <div className="relative w-full flex overflow-hidden group">
+            {/* Gradient Mask to fade out edges */}
+            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
             
-            {/* UI Monogram Logo */}
-            <div className="flex items-center gap-2 group cursor-pointer hover:opacity-100 transition-opacity">
-              <div className="w-8 h-8 rounded-full bg-yellow-400 flex items-center justify-center font-extrabold text-slate-900 text-[11px] border border-yellow-500/20 shadow-sm shadow-yellow-100">UI</div>
-              <span className="text-xs font-black tracking-tight text-slate-800">Universitas Indonesia</span>
+            <div className="animate-marquee flex gap-6 px-3 cursor-grab active:cursor-grabbing">
+              {/* Duplicate array mapping twice for seamless infinite scrolling loop */}
+              {[...testimonials, ...testimonials].map((t, i) => (
+                <div 
+                  key={i} 
+                  className="w-[300px] shrink-0 bg-slate-50/50 hover:bg-white border border-slate-100 hover:border-slate-200 p-6 rounded-3xl text-left transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 relative overflow-hidden group/card"
+                >
+                  <IconQuote size={80} className="absolute -top-4 -right-4 text-slate-100/60 rotate-12 group-hover/card:text-rose-50 transition-colors duration-500" />
+                  <div className="relative z-10">
+                    <p className="text-sm font-semibold text-slate-600 leading-relaxed mb-6">"{t.quote}"</p>
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-rose-100 to-orange-100 flex items-center justify-center text-rose-500 font-extrabold text-xs shadow-inner">
+                        {t.name.charAt(0)}
+                      </div>
+                      <div>
+                        <h5 className="text-xs font-black text-slate-900 tracking-tight">{t.name}</h5>
+                        <p className="text-[10px] font-bold text-slate-400 mt-0.5">{t.univ}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
- 
-            {/* UGM Monogram Logo */}
-            <div className="flex items-center gap-2 group cursor-pointer hover:opacity-100 transition-opacity">
-              <div className="w-8 h-8 rounded-full bg-blue-900 flex items-center justify-center font-extrabold text-white text-[11px] border border-blue-950/20 shadow-sm shadow-blue-100">UGM</div>
-              <span className="text-xs font-black tracking-tight text-slate-800">U Gadjah Mada</span>
-            </div>
- 
-            {/* ITS Geometric Monogram */}
-            <div className="flex items-center gap-2 group cursor-pointer hover:opacity-100 transition-opacity">
-              <div className="w-8 h-8 rounded-xl bg-blue-500 flex items-center justify-center font-extrabold text-white text-[10px] border border-blue-600/10 shadow-sm shadow-blue-50">ITS</div>
-              <span className="text-xs font-black tracking-tight text-slate-800">Sepuluh Nopember</span>
-            </div>
- 
-            {/* UNAIR Monogram */}
-            <div className="flex items-center gap-2 group cursor-pointer hover:opacity-100 transition-opacity">
-              <div className="w-8 h-8 rounded-full bg-indigo-900 flex items-center justify-center font-extrabold text-amber-300 text-[10px] border border-indigo-950 shadow-sm shadow-indigo-100">UNAIR</div>
-              <span className="text-xs font-black tracking-tight text-slate-800">U Airlangga</span>
-            </div>
- 
-            {/* Brawijaya Geometric */}
-            <div className="flex items-center gap-2 group cursor-pointer hover:opacity-100 transition-opacity">
-              <div className="w-8 h-8 rounded-full bg-amber-400 flex items-center justify-center font-extrabold text-slate-900 text-[11px] border border-amber-500/10 shadow-sm shadow-amber-50">UB</div>
-              <span className="text-xs font-black tracking-tight text-slate-800">U Brawijaya</span>
-            </div>
- 
           </div>
+
         </div>
       </footer>
  
