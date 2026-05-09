@@ -1,5 +1,5 @@
 "use client";
-import { motion, useTransform, useScroll, AnimatePresence } from "framer-motion";
+import { motion, useTransform, useScroll, AnimatePresence, useSpring } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { 
@@ -83,20 +83,27 @@ const nccBranches = [
 export const HorizontalScrollCarousel = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
+
+  // Membungkus progress scroll dengan elastisitas pegas (useSpring) agar super mulus sehalus mentega
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100, // Mengatur seberapa responsif tarikannya
+    damping: 30,    // Mengatur agar rem motorik halus dan tidak memantul berlebih
+    restDelta: 0.001
+  });
   
   const [scrollRange, setScrollRange] = useState(["0%", "-65%"]);
 
   useEffect(() => {
     const updateRange = () => {
       if (window.innerWidth < 768) {
-        // Mobile starts at ml-[100vw], requiring a larger shift to show card 05 completely.
-        setScrollRange(["0%", "-135%"]);
+        // Mobile starts at ml-[100vw], requiring -115% shift to bring card 05 completely in.
+        setScrollRange(["0%", "-115%"]);
       } else if (window.innerWidth < 1024) {
-        // Tablets
-        setScrollRange(["0%", "-105%"]);
+        // Tablets starting at ml-[40vw]
+        setScrollRange(["0%", "-85%"]);
       } else {
-        // Large desktops starting at ml-[25vw]
-        setScrollRange(["0%", "-95%"]);
+        // Large desktops starting at ml-[40vw]
+        setScrollRange(["0%", "-75%"]);
       }
     };
     updateRange();
@@ -104,12 +111,12 @@ export const HorizontalScrollCarousel = () => {
     return () => window.removeEventListener("resize", updateRange);
   }, []);
 
-  const x = useTransform(scrollYProgress, [0, 0.8], scrollRange);
+  const x = useTransform(smoothProgress, [0, 1], scrollRange);
   
   const [selectedBranch, setSelectedBranch] = useState<typeof nccBranches[0] | null>(null);
 
   return (
-    <section ref={targetRef} className="relative h-[400vh] bg-[#FAFAFA] border-y border-slate-100">
+    <section ref={targetRef} className="relative h-[300vh] bg-[#FAFAFA] border-y border-slate-100">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         
         {/* Header Section Selaras dengan Identitas DU 1 */}
@@ -125,7 +132,7 @@ export const HorizontalScrollCarousel = () => {
           </p>
         </div>
 
-        <motion.div style={{ x }} className="flex gap-6 md:gap-8 px-8 md:px-16 mt-48 md:mt-24 ml-[100vw] md:ml-[25vw]">
+        <motion.div style={{ x }} className="flex gap-6 md:gap-8 px-8 md:px-16 mt-48 md:mt-24 ml-[100vw] md:ml-[40vw]">
           {nccBranches.map((branch) => (
             <Card 
               key={branch.id} 
