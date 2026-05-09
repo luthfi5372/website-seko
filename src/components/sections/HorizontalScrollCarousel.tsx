@@ -82,6 +82,7 @@ const nccBranches = [
 
 export const HorizontalScrollCarousel = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
 
   // Membungkus progress scroll dengan elastisitas pegas (useSpring) agar super mulus sehalus mentega
@@ -92,6 +93,54 @@ export const HorizontalScrollCarousel = () => {
   });
   
   const [scrollRange, setScrollRange] = useState(["0%", "-65%"]);
+  const [isDragging, setIsDragging] = useState(false);
+  const startX = useRef(0);
+  const startScrollY = useRef(0);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    // Drag hanya dengan klik kiri mouse
+    if (e.button !== 0) return;
+    
+    // Jangan drag jika mengklik tombol "Detail Cabang"
+    const target = e.target as HTMLElement;
+    if (target.closest("button") || target.closest("a")) return;
+
+    setIsDragging(true);
+    startX.current = e.clientX;
+    startScrollY.current = window.scrollY;
+  };
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDragging) return;
+      
+      const dx = e.clientX - startX.current;
+      // Rasio geser: 1px geser horizontal mouse = 2.5px scroll vertikal halaman
+      const scrollDelta = -dx * 2.5; 
+      
+      window.scrollTo({
+        top: startScrollY.current + scrollDelta,
+        behavior: "auto"
+      });
+    };
+
+    const handleMouseUpOrLeave = () => {
+      if (!isDragging) return;
+      setIsDragging(false);
+    };
+
+    if (isDragging) {
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseup", handleMouseUpOrLeave);
+    } else {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUpOrLeave);
+    }
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUpOrLeave);
+    };
+  }, [isDragging]);
 
   useEffect(() => {
     const updateRange = () => {
@@ -123,7 +172,7 @@ export const HorizontalScrollCarousel = () => {
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         
         {/* Header Section Selaras dengan Identitas DU 1 */}
-        <div className="absolute top-20 left-8 md:left-16 z-10 w-full max-w-md">
+        <div className="absolute top-20 left-8 md:left-16 z-10 w-full max-w-md pointer-events-none select-none">
           <span className="text-xs font-bold text-slate-500 tracking-wider uppercase mb-2 block">
             National Creativity Competition 13th
           </span>
@@ -135,7 +184,12 @@ export const HorizontalScrollCarousel = () => {
           </p>
         </div>
 
-        <motion.div style={{ x }} className="flex gap-6 md:gap-8 px-8 md:px-16 mt-48 md:mt-24 ml-[100vw] md:ml-[40vw]">
+        <motion.div 
+          ref={containerRef}
+          onMouseDown={handleMouseDown}
+          style={{ x, cursor: isDragging ? "grabbing" : "grab" }} 
+          className="flex gap-6 md:gap-8 px-8 md:px-16 mt-48 md:mt-24 ml-[100vw] md:ml-[40vw] select-none active:cursor-grabbing"
+        >
           {nccBranches.map((branch) => (
             <Card 
               key={branch.id} 

@@ -13,6 +13,7 @@ import {
   IconFilter
 } from "@tabler/icons-react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Mapping 18 foto autentik dari folder Prestasi_documentation ke prestasi nyata sekolah
 const prestasiData = [
@@ -298,10 +299,12 @@ export default function PrestasiPage() {
               >
                 {/* Image Wrap */}
                 <div className="h-48 w-full overflow-hidden relative bg-slate-100">
-                  <img 
+                  <Image 
                     src={award.image} 
                     alt={award.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {/* Category Pill Tag */}
                   <span className="absolute top-4 left-4 z-10 px-3.5 py-1.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-white/90 backdrop-blur-md border border-slate-100 text-slate-800 shadow-sm inline-block">
@@ -371,10 +374,13 @@ export default function PrestasiPage() {
               <div className="grid grid-cols-1 md:grid-cols-12">
                 {/* Photo Side */}
                 <div className="md:col-span-7 bg-slate-100 h-64 sm:h-96 md:h-auto relative min-h-[300px]">
-                  <img
+                  <Image
                     src={selectedAward.image}
                     alt={selectedAward.title}
-                    className="w-full h-full object-cover absolute inset-0"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                    className="object-cover absolute inset-0"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none" />
                 </div>

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { IconX, IconTrophy, IconCalendar, IconChevronRight, IconSparkles } from "@tabler/icons-react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Ambil sampel data prestasi autentik untuk representasi cuplikan halaman utama
 const highlightsData = [
@@ -216,10 +217,13 @@ export const PrestasiHighlights = () => {
               <div className="grid grid-cols-1 md:grid-cols-12 text-left">
                 {/* Image Side */}
                 <div className="md:col-span-7 bg-slate-100 h-64 sm:h-96 md:h-auto relative min-h-[300px]">
-                  <img
+                  <Image
                     src={selectedAward.image}
                     alt={selectedAward.title}
-                    className="w-full h-full object-cover absolute inset-0"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                    className="object-cover absolute inset-0"
                   />
                 </div>
 
@@ -276,10 +280,12 @@ const MarqueeCard = ({ award, onSelect }: { award: typeof highlightsData[0]; onS
       whileHover={{ y: -4, scale: 1.02 }}
       className="w-[280px] sm:w-[320px] aspect-[4/3] rounded-[2rem] overflow-hidden relative cursor-pointer border border-slate-200/50 bg-slate-100 group shadow-[0_4px_20px_rgba(0,0,0,0.02)] shrink-0 text-left"
     >
-      <img 
+      <Image 
         src={award.image} 
         alt={award.title}
-        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+        fill
+        sizes="(max-width: 640px) 280px, 320px"
+        className="object-cover group-hover:scale-105 transition-transform duration-700"
       />
       {/* Soft gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/15 to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-300" />
