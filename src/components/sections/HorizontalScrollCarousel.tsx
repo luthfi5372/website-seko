@@ -90,13 +90,13 @@ export const HorizontalScrollCarousel = () => {
     const updateRange = () => {
       if (window.innerWidth < 768) {
         // Mobile starts at ml-[100vw], requiring a larger shift to show card 05 completely.
-        setScrollRange(["0%", "-115%"]);
+        setScrollRange(["0%", "-125%"]);
       } else if (window.innerWidth < 1024) {
         // Tablets
-        setScrollRange(["0%", "-85%"]);
+        setScrollRange(["0%", "-95%"]);
       } else {
         // Large desktops starting at ml-[35vw]
-        setScrollRange(["0%", "-75%"]);
+        setScrollRange(["0%", "-85%"]);
       }
     };
     updateRange();
@@ -109,7 +109,7 @@ export const HorizontalScrollCarousel = () => {
   const [selectedBranch, setSelectedBranch] = useState<typeof nccBranches[0] | null>(null);
 
   return (
-    <section ref={targetRef} className="relative h-[300vh] bg-[#FAFAFA] border-y border-slate-100">
+    <section ref={targetRef} className="relative h-[400vh] bg-[#FAFAFA] border-y border-slate-100">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         
         {/* Header Section Selaras dengan Identitas DU 1 */}
