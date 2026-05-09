@@ -15,6 +15,7 @@ import {
   IconAward,
   IconBuildingCommunity
 } from "@tabler/icons-react";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 import Link from "next/link";
 
 export const HeroSection = () => {
@@ -151,9 +152,9 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
           className="text-4xl sm:text-6xl md:text-[76px] font-black text-slate-900 tracking-tight leading-[1.05] mb-6 max-w-5xl"
         >
-          Pendidikan Tepat, <br />
+          Pusat Keunggulan IPTEK <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-orange-400 to-[#FF8E9E] italic">
-            Langkah Cerdas Masa Depan.
+            Berbingkai IMTAQ.
           </span>
         </motion.h1>
         
@@ -164,7 +165,7 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="text-sm sm:text-base md:text-lg text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed font-medium"
         >
-          Menemukan potensi terbaik setiap siswa. Kami menggabungkan nilai karakter keislaman dengan inovasi teknologi untuk mencetak generasi pemimpin selanjutnya yang siap bersaing secara global.
+          Membentuk insan cendekia yang adaptif terhadap kemajuan teknologi global, berakar kuat pada nilai-nilai akhlakul karimah Pondok Pesantren Darul Ulum.
         </motion.p>
  
         {/* Action Buttons Row */}
@@ -174,19 +175,23 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 w-full sm:w-auto"
         >
-          <Link
-            href="/ppdb"
-            className="w-full sm:w-auto px-8 py-4 bg-slate-950 hover:bg-slate-800 text-white rounded-full font-extrabold text-[12px] uppercase tracking-widest transition-all hover:shadow-lg hover:shadow-rose-100 active:scale-95 flex items-center justify-center gap-2 group"
-          >
-            <span>Daftar Sekarang</span>
-            <IconArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </Link>
-          <Link
-            href="/kontak"
-            className="w-full sm:w-auto px-8 py-4 bg-white border border-slate-200 hover:border-slate-300 text-slate-700 hover:bg-slate-50 rounded-full font-extrabold text-[12px] uppercase tracking-widest transition-all active:scale-95 flex items-center justify-center"
-          >
-            Hubungi Admin
-          </Link>
+          <MagneticButton>
+            <Link
+              href="/ppdb"
+              className="w-full sm:w-auto px-8 py-4 bg-slate-950 hover:bg-slate-800 text-white rounded-full font-extrabold text-[12px] uppercase tracking-widest transition-all hover:shadow-lg hover:shadow-rose-100 active:scale-95 flex items-center justify-center gap-2 group"
+            >
+              <span>Daftar Sekarang</span>
+              <IconArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </Link>
+          </MagneticButton>
+          <MagneticButton>
+            <Link
+              href="/kontak"
+              className="w-full sm:w-auto px-8 py-4 bg-white border border-slate-200 hover:border-slate-300 text-slate-700 hover:bg-slate-50 rounded-full font-extrabold text-[12px] uppercase tracking-widest transition-all active:scale-95 flex items-center justify-center"
+            >
+              Hubungi Admin
+            </Link>
+          </MagneticButton>
         </motion.div>
  
         {/* Interactive NCC HQ Command Center Mockup (Phase 3 Upgrade) */}

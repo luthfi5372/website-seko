@@ -7,11 +7,12 @@ import Link from "next/link";
 
 export const TrustedBy = () => {
   const partners = [
-    { name: "Universitas Indonesia", logo: "UI", color: "bg-yellow-400 text-slate-900 border-yellow-500/20" },
+    { name: "BPPT (BRIN)", logo: "BPPT", color: "bg-emerald-600 text-white border-emerald-700/20" },
     { name: "Institut Teknologi Sepuluh Nopember", logo: "ITS", color: "bg-blue-500 text-white border-blue-600/10" },
     { name: "Universitas Gadjah Mada", logo: "UGM", color: "bg-blue-900 text-white border-blue-950/20" },
     { name: "Universitas Brawijaya", logo: "UB", color: "bg-amber-400 text-slate-900 border-amber-500/10" },
     { name: "Universitas Airlangga", logo: "UNAIR", color: "bg-indigo-900 text-amber-300 border-indigo-950" },
+    { name: "Universitas Indonesia", logo: "UI", color: "bg-yellow-400 text-slate-900 border-yellow-500/20" },
   ];
 
   return (
@@ -22,10 +23,10 @@ export const TrustedBy = () => {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
           <div className="max-w-2xl text-left">
             <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-rose-500 mb-1 flex items-center gap-1.5">
-              <IconSparkles size={11} /> TRADISI PRESTASI AKADEMIK
+              <IconSparkles size={11} /> TRADISI PRESTASI AKADEMIK & AFILIASI STRATEGIS
             </h4>
             <p className="text-sm md:text-base font-bold text-slate-500 leading-relaxed">
-              Alumni kami melanjutkan studi di perguruan tinggi negeri & internasional terkemuka, serta didukung oleh jejaring mitra global.
+              Alumni kami melanjutkan studi di perguruan tinggi negeri terkemuka, serta didukung oleh kolaborasi erat dengan lembaga IPTEK nasional.
             </p>
           </div>
           <Link 
@@ -38,7 +39,7 @@ export const TrustedBy = () => {
         </div>
 
         {/* Logo Cloud Grid with Grayscale Opacity */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 md:gap-8 items-center justify-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 md:gap-8 items-center justify-center">
           {partners.map((partner, index) => (
             <div
               key={index}

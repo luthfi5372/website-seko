@@ -32,22 +32,22 @@ export const FacilityGallery = () => {
   // Premium facilities datasets with tailored pastel colors and matching icons
   const facilities = [
     { 
-      name: "Laboratorium Robotika", 
-      desc: "Pusat rekayasa robotika, mikrokontroler, dan kecerdasan buatan terpadu.",
+      name: "Lab MIPA & Riset Terpadu", 
+      desc: "Pusat eksplorasi sains terapan dan eksperimen ilmiah berbasis riset mendalam.",
       icon: <IconCpu size={24} />, 
       color: "from-[#FFB5A7]/10 to-[#FFCAD4]/30 text-rose-500 border-rose-100", 
       height: "h-80" 
     },
     { 
       name: "Perpustakaan Digital", 
-      desc: "Akses tanpa batas ke ribuan jurnal internasional, e-book, dan multimedia.",
+      desc: "Akses tanpa batas ke ribuan jurnal internasional, e-book, dan multimedia ilmiah.",
       icon: <IconBook size={24} />, 
       color: "from-[#B5E2FA]/10 to-[#FFCAD4]/30 text-blue-500 border-blue-100", 
       height: "h-96" 
     },
     { 
-      name: "Asrama Unggulan", 
-      desc: "Hunian nyaman bernuansa pesantren modern dengan pendampingan moral intensif.",
+      name: "Asrama Santri (Nusantara/Majjah)", 
+      desc: "Hunian nyaman bernuansa pesantren modern dengan pendampingan moral & ibadah intensif.",
       icon: <IconHome size={24} />, 
       color: "from-[#FFB5A7]/10 to-orange-100/30 text-orange-500 border-orange-100", 
       height: "h-72" 
@@ -60,16 +60,16 @@ export const FacilityGallery = () => {
       height: "h-80" 
     },
     { 
-      name: "Masjid Baitul 'Ilmi", 
-      desc: "Pusat spiritual pembinaan akhlak mulia dan kajian keagamaan santri.",
-      icon: <IconBuildingCommunity size={24} />, 
+      name: "Lab Komputer & Rekayasa Perangkat Lunak", 
+      desc: "Infrastruktur mutakhir rekayasa perangkat lunak, pemrograman, dan otomatisasi digital.",
+      icon: <IconCpu size={24} />, 
       color: "from-indigo-100/20 to-purple-100/30 text-indigo-500 border-indigo-100", 
       height: "h-96" 
     },
     { 
-      name: "Fasilitas Olahraga", 
-      desc: "Gedung serbaguna olahraga indoor & outdoor penunjang kebugaran fisik.",
-      icon: <IconBallBasketball size={24} />, 
+      name: "Masjid Baitul 'Ilmi", 
+      desc: "Pusat spiritual pembinaan akhlak mulia dan kajian keagamaan santri.",
+      icon: <IconBuildingCommunity size={24} />, 
       color: "from-sky-100/20 to-blue-100/30 text-sky-500 border-sky-100", 
       height: "h-72" 
     },
