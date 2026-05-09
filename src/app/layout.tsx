@@ -22,6 +22,7 @@ export const metadata: Metadata = {
 };
 
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { SmoothScrollProvider } from "@/components/shared/SmoothScrollProvider";
 
 export default function RootLayout({
   children,
@@ -29,14 +30,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className="scroll-smooth">
+    <html lang="id">
       <body
         className={`${plusJakartaSans.variable} ${playfair.variable} antialiased bg-background-light text-slate-800 selection:bg-secondary-soft/30 overflow-x-hidden`}
       >
-        <ScrollProgress />
-        <Navbar />
-        {children}
-        <Footer />
+        <SmoothScrollProvider>
+          <ScrollProgress />
+          <Navbar />
+          {children}
+          <Footer />
+        </SmoothScrollProvider>
       </body>
     </html>
   );
