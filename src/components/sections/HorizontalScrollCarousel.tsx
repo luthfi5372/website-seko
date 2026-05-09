@@ -90,13 +90,13 @@ export const HorizontalScrollCarousel = () => {
     const updateRange = () => {
       if (window.innerWidth < 768) {
         // Mobile starts at ml-[100vw], requiring a larger shift to show card 05 completely.
-        setScrollRange(["0%", "-125%"]);
+        setScrollRange(["0%", "-135%"]);
       } else if (window.innerWidth < 1024) {
         // Tablets
-        setScrollRange(["0%", "-95%"]);
+        setScrollRange(["0%", "-105%"]);
       } else {
-        // Large desktops starting at ml-[35vw]
-        setScrollRange(["0%", "-85%"]);
+        // Large desktops starting at ml-[25vw]
+        setScrollRange(["0%", "-95%"]);
       }
     };
     updateRange();
@@ -104,7 +104,7 @@ export const HorizontalScrollCarousel = () => {
     return () => window.removeEventListener("resize", updateRange);
   }, []);
 
-  const x = useTransform(scrollYProgress, [0, 1], scrollRange);
+  const x = useTransform(scrollYProgress, [0, 0.8], scrollRange);
   
   const [selectedBranch, setSelectedBranch] = useState<typeof nccBranches[0] | null>(null);
 
@@ -125,7 +125,7 @@ export const HorizontalScrollCarousel = () => {
           </p>
         </div>
 
-        <motion.div style={{ x }} className="flex gap-6 md:gap-8 px-8 md:px-16 mt-48 md:mt-24 ml-[100vw] md:ml-[35vw]">
+        <motion.div style={{ x }} className="flex gap-6 md:gap-8 px-8 md:px-16 mt-48 md:mt-24 ml-[100vw] md:ml-[25vw]">
           {nccBranches.map((branch) => (
             <Card 
               key={branch.id} 
