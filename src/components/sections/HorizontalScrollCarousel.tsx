@@ -85,10 +85,11 @@ export const HorizontalScrollCarousel = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
 
-  // Membungkus progress scroll dengan elastisitas pegas (useSpring) agar super mulus sehalus mentega
+  // Membungkus progress scroll dengan elastisitas pegas (useSpring) agar super mulus sehalus sutra
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100, // Mengatur seberapa responsif tarikannya
-    damping: 30,    // Mengatur agar rem motorik halus dan tidak memantul berlebih
+    stiffness: 140, // Lebih tangkas menyelaraskan pergerakan dengan Lenis global
+    damping: 35,    // Mengerem perlahan tanpa efek memantul lambat yang mengganggu
+    mass: 0.3,      // Massa ringan (0.3) agar responsif langsung saat di-scroll maupun di-drag
     restDelta: 0.001
   });
   
@@ -271,15 +272,15 @@ const Card = ({ card, onSelect }: CardProps) => {
   return (
     <motion.div
       onClick={onSelect}
-      initial={{ opacity: 0.6, scale: 0.93, y: 10, rotate: -0.5 }}
-      whileInView={{ opacity: 1, scale: 1, y: 0, rotate: 0 }}
-      viewport={{ once: false, margin: "-6%" }}
-      transition={{ type: "spring", stiffness: 100, damping: 20 }}
+      initial={{ opacity: 0, scale: 0.95, y: 15 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      viewport={{ once: true, margin: "-5%" }}
+      transition={{ type: "spring", stiffness: 80, damping: 22 }}
       whileHover={{ 
-        y: -12, 
-        scale: 1.03,
-        boxShadow: "0 30px 60px -15px rgba(0,0,0,0.06)",
-        transition: { type: "spring", stiffness: 400, damping: 25 }
+        y: -10, 
+        scale: 1.025,
+        boxShadow: "0 25px 50px -15px rgba(0,0,0,0.05)",
+        transition: { type: "spring", stiffness: 250, damping: 25 }
       }}
       className="group relative h-[380px] w-[280px] md:h-[420px] md:w-[320px] overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white p-8 shadow-[0_8px_30px_rgba(0,0,0,0.015)] cursor-pointer hover:border-slate-300 transition-colors duration-300 select-none flex flex-col justify-between"
     >
