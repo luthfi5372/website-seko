@@ -145,15 +145,15 @@ export const HorizontalScrollCarousel = () => {
   useEffect(() => {
     const updateRange = () => {
       if (window.innerWidth < 768) {
-        // Mobile starts at ml-[100vw], requiring -130% shift to bring card 05 completely in.
-        setScrollRange(["0%", "-130%"]);
+        // Mobile starts at pl-8, requiring -80% shift to bring last cards in.
+        setScrollRange(["0%", "-80%"]);
       } else if (window.innerWidth < 1024) {
-        // Tablets starting at ml-[40vw]
-        setScrollRange(["0%", "-100%"]);
+        // Tablets starting at pl-16
+        setScrollRange(["0%", "-65%"]);
       } else {
-        // Large desktops starting at ml-[40vw]
-        // Shifting left by -90% aligns card 05 perfectly centered on the screen.
-        setScrollRange(["0%", "-90%"]);
+        // Large desktops starting at pl-16
+        // Shifting left by -45% aligns card 05 perfectly within the viewport on desktop.
+        setScrollRange(["0%", "-45%"]);
       }
     };
     updateRange();
@@ -169,35 +169,38 @@ export const HorizontalScrollCarousel = () => {
 
   return (
     <section ref={targetRef} className="relative h-[300vh] bg-[#FAFAFA] border-y border-slate-100">
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
         
-        {/* Header Section Selaras dengan Identitas DU 1 */}
-        <div className="absolute top-20 left-8 md:left-16 z-10 w-full max-w-md pointer-events-none select-none">
+        {/* Header Section Selaras dengan Identitas DU 1 - Diposisikan di Atas Slide */}
+        <div className="w-full max-w-4xl px-8 md:px-16 mb-12 md:mb-16 select-none text-left">
           <span className="text-xs font-bold text-slate-500 tracking-wider uppercase mb-2 block">
             National Creativity Competition 13th
           </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-4">
-            Ajang Kompetisi <br/> Cendekiawan Muda.
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-4">
+            Ajang Kompetisi Cendekiawan Muda.
           </h2>
-          <p className="text-slate-500 text-sm md:text-base leading-relaxed">
+          <p className="text-slate-500 text-sm md:text-base leading-relaxed max-w-2xl font-medium">
             Menjadi bagian dari tradisi keilmuan Pondok Pesantren Darul Ulum. Siapkan delegasi terbaik sekolah Anda di 5 cabang kompetisi tingkat nasional tahun ini.
           </p>
         </div>
 
-        <motion.div 
-          ref={containerRef}
-          onMouseDown={handleMouseDown}
-          style={{ x, cursor: isDragging ? "grabbing" : "grab" }} 
-          className="flex gap-6 md:gap-8 px-8 md:px-16 mt-48 md:mt-24 ml-[100vw] md:ml-[40vw] select-none active:cursor-grabbing"
-        >
-          {nccBranches.map((branch) => (
-            <Card 
-              key={branch.id} 
-              card={branch} 
-              onSelect={() => setSelectedBranch(branch)}
-            />
-          ))}
-        </motion.div>
+        {/* Rel Slide Kartu berada di bawah Teks secara leluasa */}
+        <div className="relative w-full pl-8 md:pl-16">
+          <motion.div 
+            ref={containerRef}
+            onMouseDown={handleMouseDown}
+            style={{ x, cursor: isDragging ? "grabbing" : "grab" }} 
+            className="flex gap-6 md:gap-8 select-none active:cursor-grabbing w-fit"
+          >
+            {nccBranches.map((branch) => (
+              <Card 
+                key={branch.id} 
+                card={branch} 
+                onSelect={() => setSelectedBranch(branch)}
+              />
+            ))}
+          </motion.div>
+        </div>
 
       </div>
 
