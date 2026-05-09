@@ -96,14 +96,15 @@ export const HorizontalScrollCarousel = () => {
   useEffect(() => {
     const updateRange = () => {
       if (window.innerWidth < 768) {
-        // Mobile starts at ml-[100vw], requiring -115% shift to bring card 05 completely in.
-        setScrollRange(["0%", "-115%"]);
+        // Mobile starts at ml-[100vw], requiring -130% shift to bring card 05 completely in.
+        setScrollRange(["0%", "-130%"]);
       } else if (window.innerWidth < 1024) {
         // Tablets starting at ml-[40vw]
-        setScrollRange(["0%", "-85%"]);
+        setScrollRange(["0%", "-100%"]);
       } else {
         // Large desktops starting at ml-[40vw]
-        setScrollRange(["0%", "-75%"]);
+        // Shifting left by -90% aligns card 05 perfectly centered on the screen.
+        setScrollRange(["0%", "-90%"]);
       }
     };
     updateRange();
@@ -111,7 +112,9 @@ export const HorizontalScrollCarousel = () => {
     return () => window.removeEventListener("resize", updateRange);
   }, []);
 
-  const x = useTransform(smoothProgress, [0, 1], scrollRange);
+  // Animasi horizontal selesai saat progress scroll mencapai 75% (0.75), 
+  // menyisakan 25% terakhir sebagai resting phase sehingga semua kartu terlihat penuh di tengah layar.
+  const x = useTransform(smoothProgress, [0, 0.75], scrollRange);
   
   const [selectedBranch, setSelectedBranch] = useState<typeof nccBranches[0] | null>(null);
 
