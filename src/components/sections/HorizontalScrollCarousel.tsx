@@ -65,19 +65,6 @@ const nccBranches = [
       hadiah: "Trophy Kemenag RI + Paket Kursus Bahasa Inggris Eksklusif + Medali Penghargaan."
     }
   },
-  { 
-    id: 5, 
-    title: "IT & Robotics", 
-    color: "bg-orange-50", 
-    text: "text-orange-600", 
-    desc: "Cabang bergengsi perpaduan rekayasa perangkat lunak dan otomatisasi robot cerdas.",
-    details: {
-      syarat: "Kelompok beranggotakan maks 2 Siswa SMP/MTs Sederajat.",
-      materi: "Line Follower Robot (Analog/Micro), Internet of Things (IoT) App, Mobile App Coding.",
-      metode: "Sesi Live Coding Demo (3 Jam) & Duel Kecepatan Robot di lintasan sirkuit tanding.",
-      hadiah: "Trophy Eksklusif Rektor ITS + Kit Sensor & Mikroprosesor IoT + Tabungan Juara."
-    }
-  },
 ];
 
 export const HorizontalScrollCarousel = () => {
@@ -182,15 +169,15 @@ export const HorizontalScrollCarousel = () => {
   useEffect(() => {
     const updateRange = () => {
       if (window.innerWidth < 768) {
-        // Mobile starts at pl-8, requiring -80% shift to bring last cards in.
-        setScrollRange(["0%", "-80%"]);
+        // Mobile starts at pl-8, requiring -60% shift to bring last cards in (4 cards).
+        setScrollRange(["0%", "-60%"]);
       } else if (window.innerWidth < 1024) {
         // Tablets starting at pl-16
-        setScrollRange(["0%", "-65%"]);
+        setScrollRange(["0%", "-40%"]);
       } else {
         // Large desktops starting at pl-16
-        // Shifting left by -45% aligns card 05 perfectly within the viewport on desktop.
-        setScrollRange(["0%", "-45%"]);
+        // Shifting left by -20% aligns card 04 perfectly within the viewport on desktop.
+        setScrollRange(["0%", "-20%"]);
       }
     };
     updateRange();
@@ -225,7 +212,7 @@ export const HorizontalScrollCarousel = () => {
             Ajang Kompetisi Cendekiawan Muda.
           </h2>
           <p className="text-slate-500 text-sm md:text-base leading-relaxed max-w-2xl font-medium">
-            Menjadi bagian dari tradisi keilmuan Pondok Pesantren Darul Ulum. Siapkan delegasi terbaik sekolah Anda di 5 cabang kompetisi tingkat nasional tahun ini.
+            Menjadi bagian dari tradisi keilmuan Pondok Pesantren Darul Ulum. Siapkan delegasi terbaik sekolah Anda di 4 cabang kompetisi tingkat nasional tahun ini.
           </p>
         </div>
 
