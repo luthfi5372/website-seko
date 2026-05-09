@@ -69,115 +69,24 @@ const nccBranches = [
 
 export const HorizontalScrollCarousel = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
 
-  // Membungkus progress scroll dengan elastisitas pegas (useSpring) agar super mulus sehalus sutra
+  // Membungkus progress scroll dengan elastisitas pegas (useSpring) agar super mulus
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 140, // Lebih tangkas menyelaraskan pergerakan dengan Lenis global
-    damping: 35,    // Mengerem perlahan tanpa efek memantul lambat yang mengganggu
-    mass: 0.3,      // Massa ringan (0.3) agar responsif langsung saat di-scroll maupun di-drag
+    stiffness: 140, 
+    damping: 35,
+    mass: 0.3,
     restDelta: 0.001
   });
   
-  const [scrollRange, setScrollRange] = useState(["0%", "-65%"]);
-  const [isDragging, setIsDragging] = useState(false);
-  const startX = useRef(0);
-  const startScrollY = useRef(0);
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    // Drag hanya dengan klik kiri mouse
-    if (e.button !== 0) return;
-    
-    // Jangan drag jika mengklik tombol "Detail Cabang" atau tautan interaktif
-    const target = e.target as HTMLElement;
-    if (target.closest("button") || target.closest("a")) return;
-
-    // SANGAT PENTING: Mencegah browser melakukan penyorotan teks atau penyeretan gambar bawaan
-    // yang dapat menyabotase dan membekukan event mousemove kita!
-    e.preventDefault();
-
-    setIsDragging(true);
-    startX.current = e.clientX;
-    startScrollY.current = window.scrollY;
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    const target = e.target as HTMLElement;
-    if (target.closest("button") || target.closest("a")) return;
-
-    setIsDragging(true);
-    startX.current = e.touches[0].clientX;
-    startScrollY.current = window.scrollY;
-  };
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!isDragging) return;
-      
-      const dx = e.clientX - startX.current;
-      // Rasio geser: 1px geser horizontal mouse = 2.5px scroll vertikal halaman
-      const scrollDelta = -dx * 2.5; 
-      
-      window.scrollTo({
-        top: startScrollY.current + scrollDelta,
-        behavior: "auto"
-      });
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-      if (!isDragging) return;
-      
-      const dx = e.touches[0].clientX - startX.current;
-      const scrollDelta = -dx * 2.5;
-      
-      // Mencegah efek mental/pantulan (bounce) bawaan sistem ponsel saat ditarik horizontal
-      if (e.cancelable) {
-        e.preventDefault();
-      }
-
-      window.scrollTo({
-        top: startScrollY.current + scrollDelta,
-        behavior: "auto"
-      });
-    };
-
-    const handleDragEnd = () => {
-      if (!isDragging) return;
-      setIsDragging(false);
-    };
-
-    if (isDragging) {
-      window.addEventListener("mousemove", handleMouseMove);
-      window.addEventListener("mouseup", handleDragEnd);
-      window.addEventListener("touchmove", handleTouchMove, { passive: false });
-      window.addEventListener("touchend", handleDragEnd);
-    } else {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleDragEnd);
-      window.removeEventListener("touchmove", handleTouchMove);
-      window.removeEventListener("touchend", handleDragEnd);
-    }
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleDragEnd);
-      window.removeEventListener("touchmove", handleTouchMove);
-      window.removeEventListener("touchend", handleDragEnd);
-    };
-  }, [isDragging]);
-
+  const [scrollRange, setScrollRange] = useState(["0%", "-20%"]);
+  
   useEffect(() => {
     const updateRange = () => {
-      if (window.innerWidth < 768) {
-        // Mobile starts at pl-8, requiring -60% shift to bring last cards in (4 cards).
-        setScrollRange(["0%", "-60%"]);
-      } else if (window.innerWidth < 1024) {
-        // Tablets starting at pl-16
-        setScrollRange(["0%", "-40%"]);
+      if (window.innerWidth < 1024) {
+        setScrollRange(["0%", "-40%"]); // Tablet
       } else {
-        // Large desktops starting at pl-16
-        // Shifting left by -20% aligns card 04 perfectly within the viewport on desktop.
-        setScrollRange(["0%", "-20%"]);
+        setScrollRange(["0%", "-20%"]); // Desktop
       }
     };
     updateRange();
@@ -185,14 +94,11 @@ export const HorizontalScrollCarousel = () => {
     return () => window.removeEventListener("resize", updateRange);
   }, []);
 
-  // Animasi horizontal selesai saat progress scroll mencapai 75% (0.75), 
-  // menyisakan 25% terakhir sebagai resting phase sehingga semua kartu terlihat penuh di tengah layar.
   const x = useTransform(smoothProgress, [0, 0.75], scrollRange);
-  
   const [selectedBranch, setSelectedBranch] = useState<typeof nccBranches[0] | null>(null);
 
   return (
-    <section ref={targetRef} className="relative h-[300vh] bg-[#FAFAFA] border-y border-slate-100 overflow-hidden">
+    <section className="relative bg-[#FAFAFA] border-y border-slate-100 overflow-hidden">
       {/* Luxury Dotted Grid Pattern - Highly Optimized Pure CSS WebGL Alternative */}
       <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1.5px,transparent_1.5px)] [background-size:32px_32px] opacity-60 pointer-events-none select-none" />
       
@@ -201,40 +107,64 @@ export const HorizontalScrollCarousel = () => {
       <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-[#FFCAD4]/12 rounded-full blur-[130px] pointer-events-none select-none animate-pulse" style={{ animationDuration: '10s' }} />
       <div className="absolute top-[40%] right-[30%] w-[350px] h-[350px] bg-[#FFB5A7]/8 rounded-full blur-[110px] pointer-events-none select-none animate-pulse" style={{ animationDuration: '12s' }} />
 
-      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
-        
-        {/* Header Section Selaras dengan Identitas DU 1 - Diposisikan di Atas Slide */}
-        <div className="w-full max-w-4xl px-8 md:px-16 mb-12 md:mb-16 select-none text-left relative z-10">
-          <span className="text-xs font-bold text-slate-500 tracking-wider uppercase mb-2 block">
-            National Creativity Competition 13th
-          </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-4">
-            Ajang Kompetisi Cendekiawan Muda.
-          </h2>
-          <p className="text-slate-500 text-sm md:text-base leading-relaxed max-w-2xl font-medium">
-            Menjadi bagian dari tradisi keilmuan Pondok Pesantren Darul Ulum. Siapkan delegasi terbaik sekolah Anda di 4 cabang kompetisi tingkat nasional tahun ini.
-          </p>
-        </div>
+      {/* 💻 VERSI DESKTOP & TABLET (Menggunakan Framer Motion Smooth Horizontal Scroll) */}
+      <div ref={targetRef} className="hidden md:block h-[300vh] relative z-10">
+        <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
+          
+          {/* Header Section */}
+          <div className="w-full max-w-4xl px-16 mb-16 select-none text-left relative z-10">
+            <span className="text-xs font-bold text-slate-500 tracking-wider uppercase mb-2 block">
+              National Creativity Competition 13th
+            </span>
+            <h2 className="text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-4">
+              Ajang Kompetisi Cendekiawan Muda.
+            </h2>
+            <p className="text-slate-500 text-base leading-relaxed max-w-2xl font-medium">
+              Menjadi bagian dari tradisi keilmuan Pondok Pesantren Darul Ulum. Siapkan delegasi terbaik sekolah Anda di 4 cabang kompetisi tingkat nasional tahun ini.
+            </p>
+          </div>
 
-        {/* Rel Slide Kartu berada di bawah Teks secara leluasa */}
-        <div className="relative w-full pl-8 md:pl-16 relative z-10">
-          <motion.div 
-            ref={containerRef}
-            onMouseDown={handleMouseDown}
-            onTouchStart={handleTouchStart}
-            style={{ x, cursor: isDragging ? "grabbing" : "grab" }} 
-            className="flex gap-6 md:gap-8 select-none active:cursor-grabbing w-fit py-4"
-          >
-            {nccBranches.map((branch) => (
+          {/* Rel Slide Kartu Desktop */}
+          <div className="relative w-full pl-16 relative z-10">
+            <motion.div 
+              style={{ x }} 
+              className="flex gap-8 select-none w-fit py-4"
+            >
+              {nccBranches.map((branch) => (
+                <Card 
+                  key={branch.id} 
+                  card={branch} 
+                  onSelect={() => setSelectedBranch(branch)}
+                />
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* 📱 VERSI MOBILE (Menggunakan Native CSS Snap Scroll - Super Ringan!) */}
+      <div className="block md:hidden relative z-10 px-6 py-20 overflow-hidden">
+        <span className="text-[10px] font-bold text-slate-500 tracking-wider uppercase mb-2 block">
+          National Creativity Competition 13th
+        </span>
+        <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-4">
+          Ajang Kompetisi<br/>Cendekiawan Muda.
+        </h2>
+        <p className="text-slate-500 text-sm leading-relaxed mb-10 font-medium">
+          Siapkan delegasi terbaik sekolah Anda di 4 cabang kompetisi tingkat nasional tahun ini.
+        </p>
+        
+        {/* Kontainer dengan overflow-x-auto dan snap-x */}
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-8 -mx-6 px-6 hide-scrollbar">
+          {nccBranches.map((branch) => (
+            <div key={branch.id} className="snap-center shrink-0 py-2">
               <Card 
-                key={branch.id} 
                 card={branch} 
                 onSelect={() => setSelectedBranch(branch)}
               />
-            ))}
-          </motion.div>
+            </div>
+          ))}
         </div>
-
       </div>
 
       {/* Beautiful Glassmorphic Detail Modal */}
