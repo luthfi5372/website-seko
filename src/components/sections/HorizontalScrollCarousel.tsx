@@ -101,12 +101,25 @@ export const HorizontalScrollCarousel = () => {
     // Drag hanya dengan klik kiri mouse
     if (e.button !== 0) return;
     
-    // Jangan drag jika mengklik tombol "Detail Cabang"
+    // Jangan drag jika mengklik tombol "Detail Cabang" atau tautan interaktif
+    const target = e.target as HTMLElement;
+    if (target.closest("button") || target.closest("a")) return;
+
+    // SANGAT PENTING: Mencegah browser melakukan penyorotan teks atau penyeretan gambar bawaan
+    // yang dapat menyabotase dan membekukan event mousemove kita!
+    e.preventDefault();
+
+    setIsDragging(true);
+    startX.current = e.clientX;
+    startScrollY.current = window.scrollY;
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
     const target = e.target as HTMLElement;
     if (target.closest("button") || target.closest("a")) return;
 
     setIsDragging(true);
-    startX.current = e.clientX;
+    startX.current = e.touches[0].clientX;
     startScrollY.current = window.scrollY;
   };
 
@@ -124,21 +137,44 @@ export const HorizontalScrollCarousel = () => {
       });
     };
 
-    const handleMouseUpOrLeave = () => {
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!isDragging) return;
+      
+      const dx = e.touches[0].clientX - startX.current;
+      const scrollDelta = -dx * 2.5;
+      
+      // Mencegah efek mental/pantulan (bounce) bawaan sistem ponsel saat ditarik horizontal
+      if (e.cancelable) {
+        e.preventDefault();
+      }
+
+      window.scrollTo({
+        top: startScrollY.current + scrollDelta,
+        behavior: "auto"
+      });
+    };
+
+    const handleDragEnd = () => {
       if (!isDragging) return;
       setIsDragging(false);
     };
 
     if (isDragging) {
       window.addEventListener("mousemove", handleMouseMove);
-      window.addEventListener("mouseup", handleMouseUpOrLeave);
+      window.addEventListener("mouseup", handleDragEnd);
+      window.addEventListener("touchmove", handleTouchMove, { passive: false });
+      window.addEventListener("touchend", handleDragEnd);
     } else {
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUpOrLeave);
+      window.removeEventListener("mouseup", handleDragEnd);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleDragEnd);
     }
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUpOrLeave);
+      window.removeEventListener("mouseup", handleDragEnd);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleDragEnd);
     };
   }, [isDragging]);
 
@@ -189,6 +225,7 @@ export const HorizontalScrollCarousel = () => {
           <motion.div 
             ref={containerRef}
             onMouseDown={handleMouseDown}
+            onTouchStart={handleTouchStart}
             style={{ x, cursor: isDragging ? "grabbing" : "grab" }} 
             className="flex gap-6 md:gap-8 select-none active:cursor-grabbing w-fit"
           >
