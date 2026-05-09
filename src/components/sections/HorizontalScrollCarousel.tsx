@@ -204,11 +204,19 @@ export const HorizontalScrollCarousel = () => {
   const [selectedBranch, setSelectedBranch] = useState<typeof nccBranches[0] | null>(null);
 
   return (
-    <section ref={targetRef} className="relative h-[300vh] bg-[#FAFAFA] border-y border-slate-100">
+    <section ref={targetRef} className="relative h-[300vh] bg-[#FAFAFA] border-y border-slate-100 overflow-hidden">
+      {/* Luxury Dotted Grid Pattern - Highly Optimized Pure CSS WebGL Alternative */}
+      <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1.5px,transparent_1.5px)] [background-size:32px_32px] opacity-60 pointer-events-none select-none" />
+      
+      {/* Earthy Ambient Glow Backdrops (Pastel Palette Theme) */}
+      <div className="absolute top-[10%] left-[5%] w-[400px] h-[400px] bg-[#1E3A1E]/3 rounded-full blur-[100px] pointer-events-none select-none animate-pulse" style={{ animationDuration: '8s' }} />
+      <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-[#FFCAD4]/12 rounded-full blur-[130px] pointer-events-none select-none animate-pulse" style={{ animationDuration: '10s' }} />
+      <div className="absolute top-[40%] right-[30%] w-[350px] h-[350px] bg-[#FFB5A7]/8 rounded-full blur-[110px] pointer-events-none select-none animate-pulse" style={{ animationDuration: '12s' }} />
+
       <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
         
         {/* Header Section Selaras dengan Identitas DU 1 - Diposisikan di Atas Slide */}
-        <div className="w-full max-w-4xl px-8 md:px-16 mb-12 md:mb-16 select-none text-left">
+        <div className="w-full max-w-4xl px-8 md:px-16 mb-12 md:mb-16 select-none text-left relative z-10">
           <span className="text-xs font-bold text-slate-500 tracking-wider uppercase mb-2 block">
             National Creativity Competition 13th
           </span>
@@ -221,13 +229,13 @@ export const HorizontalScrollCarousel = () => {
         </div>
 
         {/* Rel Slide Kartu berada di bawah Teks secara leluasa */}
-        <div className="relative w-full pl-8 md:pl-16">
+        <div className="relative w-full pl-8 md:pl-16 relative z-10">
           <motion.div 
             ref={containerRef}
             onMouseDown={handleMouseDown}
             onTouchStart={handleTouchStart}
             style={{ x, cursor: isDragging ? "grabbing" : "grab" }} 
-            className="flex gap-6 md:gap-8 select-none active:cursor-grabbing w-fit"
+            className="flex gap-6 md:gap-8 select-none active:cursor-grabbing w-fit py-4"
           >
             {nccBranches.map((branch) => (
               <Card 
@@ -261,29 +269,44 @@ interface CardProps {
 
 const Card = ({ card, onSelect }: CardProps) => {
   return (
-    <div
+    <motion.div
       onClick={onSelect}
-      className={cn(
-        "group relative h-[380px] w-[280px] md:h-[420px] md:w-[320px] overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-2 hover:border-slate-300 cursor-pointer",
-      )}
+      initial={{ opacity: 0.6, scale: 0.93, y: 10, rotate: -0.5 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0, rotate: 0 }}
+      viewport={{ once: false, margin: "-6%" }}
+      transition={{ type: "spring", stiffness: 100, damping: 20 }}
+      whileHover={{ 
+        y: -12, 
+        scale: 1.03,
+        boxShadow: "0 30px 60px -15px rgba(0,0,0,0.06)",
+        transition: { type: "spring", stiffness: 400, damping: 25 }
+      }}
+      className="group relative h-[380px] w-[280px] md:h-[420px] md:w-[320px] overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white p-8 shadow-[0_8px_30px_rgba(0,0,0,0.015)] cursor-pointer hover:border-slate-300 transition-colors duration-300 select-none flex flex-col justify-between"
     >
-      <div className={cn("mb-6 flex h-14 w-14 items-center justify-center rounded-2xl", card.color, card.text)}>
-        <span className="text-xl font-black">0{card.id}</span>
-      </div>
-      
-      <h3 className="mb-3 text-2xl font-bold text-slate-900 tracking-tight">
-        {card.title}
-      </h3>
-      
-      <p className="text-slate-500 text-sm leading-relaxed">
-        {card.desc}
-      </p>
+      {/* Decorative Hover Glow Inside Card */}
+      <div className="absolute -right-16 -bottom-16 w-36 h-36 rounded-full bg-gradient-to-br from-slate-100 to-slate-200/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-      <div className="absolute bottom-8 left-8 flex items-center gap-2 text-sm font-semibold text-slate-600 group-hover:text-slate-900 transition-colors">
-        <span>Detail Cabang</span>
-        <span className="transform transition-transform group-hover:translate-x-1">&rarr;</span>
+      <div className="relative z-10 flex flex-col h-full justify-between">
+        <div>
+          <div className={cn("mb-6 flex h-14 w-14 items-center justify-center rounded-2xl", card.color, card.text)}>
+            <span className="text-xl font-black">0{card.id}</span>
+          </div>
+          
+          <h3 className="mb-3 text-2xl font-bold text-slate-900 tracking-tight">
+            {card.title}
+          </h3>
+          
+          <p className="text-slate-500 text-sm leading-relaxed">
+            {card.desc}
+          </p>
+        </div>
+
+        <div className="flex items-center gap-2 text-sm font-semibold text-slate-600 group-hover:text-slate-900 transition-colors">
+          <span>Detail Cabang</span>
+          <span className="transform transition-transform group-hover:translate-x-1">&rarr;</span>
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
