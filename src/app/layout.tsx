@@ -17,8 +17,46 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "SMA Darul Ulum 1 Unggulan | Academic Excellence Profile",
-  description: "Official Website of SMA Darul Ulum 1 Unggulan. Premium academic education with a modern spiritual foundation.",
+  title: {
+    template: "%s | SMA Darul Ulum 1 Unggulan",
+    default: "SMA Darul Ulum 1 Unggulan | Academic Excellence Profile",
+  },
+  description: "Portal digital resmi SMA Darul Ulum 1 Unggulan Jombang. Menggabungkan pendidikan akademik bertaraf internasional dengan nilai-nilai spiritual kepesantrenan.",
+  keywords: ["SMA Darul Ulum 1", "Pondok Pesantren Darul Ulum", "Jombang", "Sekolah Unggulan", "Pendidikan Berkarakter", "NCC 13th"],
+  authors: [{ name: "SMA Darul Ulum 1 Unggulan" }],
+  openGraph: {
+    title: "SMA Darul Ulum 1 Unggulan",
+    description: "Portal digital resmi SMA Darul Ulum 1 Unggulan Jombang. Menggabungkan pendidikan akademik bertaraf internasional dengan nilai-nilai spiritual kepesantrenan.",
+    url: "https://website-seko.vercel.app",
+    siteName: "SMADU 1 Unggulan",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1523050335102-c8847976b128?q=80&w=1200&h=630&auto=format&fit=crop", // Ukuran ideal OG Image (1200x630)
+        width: 1200,
+        height: 630,
+        alt: "Gedung SMA Darul Ulum 1 Unggulan",
+      },
+    ],
+    locale: "id_ID",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SMA Darul Ulum 1 Unggulan",
+    description: "Portal digital resmi SMA Darul Ulum 1 Unggulan Jombang.",
+    images: ["https://images.unsplash.com/photo-1523050335102-c8847976b128?q=80&w=1200&h=630&auto=format&fit=crop"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
