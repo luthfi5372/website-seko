@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import Image from "next/image";
 
 type LinkPreviewProps = {
   children: React.ReactNode;
@@ -25,7 +26,7 @@ export const LinkPreview = ({
   isStatic = false,
   imageSrc,
 }: LinkPreviewProps) => {
-  let src = isStatic ? imageSrc : `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
+  const src = isStatic ? (imageSrc || "") : `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
 
   const [isOpen, setOpen] = React.useState(false);
 
@@ -83,12 +84,13 @@ export const LinkPreview = ({
                   href={url}
                   className="block p-1 bg-white/[0.03] rounded-lg hover:bg-white/[0.05] transition-colors"
                 >
-                  <img
+                  <Image
                     src={src}
                     width={200}
                     height={125}
                     className="rounded-lg object-cover"
                     alt="preview"
+                    sizes="200px"
                   />
                 </Link>
               </motion.div>

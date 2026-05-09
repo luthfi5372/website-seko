@@ -4,6 +4,7 @@ import { FloatingDock } from "@/components/ui/floating-dock";
 import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 import { NAV_ITEMS } from "@/lib/constants";
+import Image from "next/image";
 
 export default function GaleriPage() {
   const containerRef = useRef(null);
@@ -53,7 +54,13 @@ export default function GaleriPage() {
                 }}
                 className="absolute w-[300px] md:w-[500px] aspect-[4/3] rounded-3xl overflow-hidden bg-white/40 backdrop-blur-xl border border-primary/10 shadow-2xl"
               >
-                <img src={img} className="w-full h-full object-cover opacity-80" />
+                <Image
+                  src={img}
+                  alt="Galeri Image"
+                  fill
+                  className="object-cover opacity-80"
+                  sizes="(max-width: 768px) 300px, 500px"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
               </motion.div>
             );

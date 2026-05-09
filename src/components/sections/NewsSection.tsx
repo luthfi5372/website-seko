@@ -2,6 +2,7 @@
 
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { IconArrowRight, IconSparkles } from "@tabler/icons-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export const NewsSection = () => {
@@ -74,12 +75,13 @@ export const NewsSection = () => {
                   {item.desc}
                 </CardItem>
                 <CardItem translateZ="80" className="w-full mt-8 overflow-hidden rounded-2xl border border-slate-100 shadow-sm relative">
-                  <img
+                  <Image
                     src={item.image}
-                    height="600"
-                    width="1000"
+                    height={600}
+                    width={1000}
                     className="h-60 w-full object-cover rounded-2xl group-hover/card:scale-[1.03] transition-transform duration-500"
                     alt="thumbnail"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                   {/* Glass shimmer overlay */}
                   <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-white/10 to-transparent pointer-events-none" />

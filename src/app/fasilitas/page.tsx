@@ -1,5 +1,6 @@
 import { FlaskConical, Library, Microchip, Trophy, Wifi, Coffee, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function FasilitasPage() {
   const facilities = [
@@ -57,10 +58,12 @@ export default function FasilitasPage() {
           {facilities.map((fac, idx) => (
             <div key={idx} className="group">
               <div className="aspect-video rounded-2xl overflow-hidden mb-6 bg-slate-100 relative shadow-sm">
-                <img 
+                <Image 
                   src={fac.img} 
                   alt={fac.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="absolute top-4 left-4 p-3 bg-white rounded-xl shadow-lg">
                   {fac.icon}

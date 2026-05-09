@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
+import Image from "next/image";
+
 interface CarouselItem {
   id: number;
   title: string;
@@ -52,10 +54,12 @@ export const Animated3DCarousel = ({ items }: { items: CarouselItem[] }) => {
                 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
-                <img
+                <Image
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 300px, 450px"
                 />
                 <div className="absolute bottom-6 left-6 z-20 text-white">
                   <span className="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-2 block">
