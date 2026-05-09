@@ -1,6 +1,6 @@
 "use client";
 import { motion, useTransform, useScroll, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { 
   IconX, 
@@ -83,7 +83,28 @@ const nccBranches = [
 export const HorizontalScrollCarousel = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-65%"]);
+  
+  const [scrollRange, setScrollRange] = useState(["0%", "-65%"]);
+
+  useEffect(() => {
+    const updateRange = () => {
+      if (window.innerWidth < 768) {
+        // Mobile starts at ml-[100vw], requiring a larger shift to show card 05 completely.
+        setScrollRange(["0%", "-115%"]);
+      } else if (window.innerWidth < 1024) {
+        // Tablets
+        setScrollRange(["0%", "-85%"]);
+      } else {
+        // Large desktops starting at ml-[35vw]
+        setScrollRange(["0%", "-75%"]);
+      }
+    };
+    updateRange();
+    window.addEventListener("resize", updateRange);
+    return () => window.removeEventListener("resize", updateRange);
+  }, []);
+
+  const x = useTransform(scrollYProgress, [0, 1], scrollRange);
   
   const [selectedBranch, setSelectedBranch] = useState<typeof nccBranches[0] | null>(null);
 
